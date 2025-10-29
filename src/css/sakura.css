@@ -1,4 +1,4 @@
-/* Анимация лепестков сакуры для itch.io */
+/* Анимация лепестков сакуры */
 
 .sakura-enabled body {
   background: radial-gradient(circle at 20% 80%, #ffb7d5 0%, transparent 50%),
@@ -24,7 +24,6 @@
   transition: all 0.3s ease !important;
 }
 
-/* Форма лепестка - более естественная */
 .sakura-enabled body::before,
 .sakura-enabled body::after,
 .sakura-enabled html::before,
@@ -46,7 +45,6 @@
   );
 }
 
-/* Разные размеры и цвета */
 .sakura-enabled body::before {
   top: -30px;
   left: 5%;
@@ -101,7 +99,6 @@
   animation: petal6 17s infinite 2.5s;
 }
 
-/* Пиксельный эффект для лепестков */
 .sakura-enabled body::before,
 .sakura-enabled body::after,
 .sakura-enabled html::before,

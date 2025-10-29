@@ -1,0 +1,236 @@
+/* ==================== 🎮 PIXEL PORTFOLIO STYLES ==================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent-color: #3b82f6;
+  --bg-color: #0f172a;
+  --card-color: #1e293b;
+  --text-color: #f8fafc;
+  --card-blur: 15px;
+}
+
+[data-theme="dark"] {
+  --accent-color: #3b82f6;
+  --bg-color: #0f172a;
+  --card-color: #1e293b;
+  --text-color: #f8fafc;
+}
+
+[data-theme="light"] {
+  --accent-color: #2563eb;
+  --bg-color: #f1f5f9;
+  --card-color: #ffffff;
+  --text-color: #1e293b;
+}
+
+body {
+  font-family: "Courier New", monospace;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* 🎮 ПИКСЕЛЬНЫЙ СТИЛЬ - ТОЛЬКО ДЛЯ ОПРЕДЕЛЕННЫХ ЭЛЕМЕНТОВ */
+.pixel-border {
+  border: 2px solid var(--text-color);
+  border-image: linear-gradient(
+      45deg,
+      transparent 25%,
+      var(--accent-color) 25%,
+      var(--accent-color) 50%,
+      transparent 50%,
+      transparent 75%,
+      var(--accent-color) 75%
+    )
+    2;
+  image-rendering: pixelated;
+}
+
+.pixel-button {
+  background: var(--accent-color);
+  border: 2px solid var(--text-color);
+  padding: 8px 16px;
+  color: white;
+  font-family: "Courier New", monospace;
+  cursor: pointer;
+  image-rendering: pixelated;
+  transition: all 0.1s ease;
+}
+
+.pixel-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px var(--text-color);
+}
+
+.pixel-button:active {
+  transform: translateY(0px);
+  box-shadow: 2px 2px 0px var(--text-color);
+}
+
+/* ПИКСЕЛЬНЫЕ КАРТОЧКИ */
+.card {
+  background: var(--card-color);
+  border-radius: 0px;
+  border: 3px solid var(--text-color);
+  box-shadow: 6px 6px 0px var(--accent-color);
+  backdrop-filter: blur(var(--card-blur));
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 8px 8px 0px var(--accent-color);
+}
+
+/* ПИКСЕЛЬНЫЕ ПРОГРЕСС-БАРЫ */
+.pixel-progress {
+  width: 100%;
+  height: 20px;
+  background: var(--card-color);
+  border: 2px solid var(--text-color);
+  position: relative;
+  image-rendering: pixelated;
+}
+
+.pixel-progress-fill {
+  height: 100%;
+  background: var(--accent-color);
+  border-right: 2px solid var(--text-color);
+  transition: width 0.5s ease;
+}
+
+/* ПИКСЕЛЬНЫЕ АЧИВКИ */
+.achievement {
+  border: 2px solid var(--text-color);
+  background: var(--card-color);
+  padding: 10px;
+  text-align: center;
+  image-rendering: pixelated;
+  position: relative;
+}
+
+.achievement::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid var(--accent-color);
+  z-index: -1;
+}
+
+.achievement.locked {
+  opacity: 0.6;
+  filter: grayscale(1);
+}
+
+/* ПИКСЕЛЬНЫЙ ХЕДЕР */
+.header {
+  background: var(--card-color);
+  border-bottom: 3px solid var(--text-color);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 0px var(--accent-color);
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--text-color);
+  display: inline-block;
+  margin-right: 8px;
+  image-rendering: pixelated;
+}
+
+.status-dot.online {
+  background: #10b981;
+  animation: pixel-pulse 2s infinite;
+}
+
+@keyframes pixel-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ПИКСЕЛЬНАЯ СЕТКА */
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ПИКСЕЛЬНЫЕ СОЦ-ИКОНКИ */
+.social-icon {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--text-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  text-decoration: none;
+  color: var(--text-color);
+  image-rendering: pixelated;
+  transition: all 0.2s ease;
+}
+
+.social-icon:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0px var(--text-color);
+}
+
+/* Обычные элементы (БЕЗ пиксельного стиля) */
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.user-title {
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.custom-status {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .header {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

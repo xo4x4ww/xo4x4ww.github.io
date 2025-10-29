@@ -30,6 +30,7 @@
                             <img src="src/icons/moon.svg" alt="Dark theme" class="theme-icon moon-icon">
                         </div>
                     </div>
+                    <span class="theme-label">Тема</span>
                 </label>
             </div>
         </header>
@@ -75,42 +76,108 @@
 
         <!-- 📱 Футер -->
         <footer class="footer">
+            <div class="footer-waves">
+                <div class="wave wave-1"></div>
+                <div class="wave wave-2"></div>
+                <div class="wave wave-3"></div>
+            </div>
+
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Контакты</h4>
-                    <div class="social-links" id="socialLinks"></div>
-                </div>
-                <div class="footer-section">
-                    <h4>Быстрые ссылки</h4>
-                    <div class="footer-links">
-                        <a href="#skills" class="footer-link">Навыки</a>
-                        <a href="#achievements" class="footer-link">Ачивки</a>
-                        <a href="#projects" class="footer-link">Проекты</a>
+                    <div class="footer-logo">
+                        <img src="src/images/avatar.png" alt="Logo" class="footer-avatar">
+                        <div class="footer-brand">
+                            <h3 id="footerUserName"></h3>
+                            <p>Pixel Artist & Developer</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">Создаю цифровые миры с помощью кода и пикселей. Превращаю идеи в
+                        реальность.</p>
+                    <div class="footer-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="projectsCount">5+</span>
+                            <span class="stat-label">Проектов</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="experienceCount">2+</span>
+                            <span class="stat-label">Года опыта</span>
+                        </div>
                     </div>
                 </div>
+
                 <div class="footer-section">
-                    <h4>О сайте</h4>
-                    <p class="footer-text">Создано с ❤️ с использованием HTML, CSS и JavaScript</p>
-                    <div class="footer-tech">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
+                    <h4>Навигация</h4>
+                    <div class="footer-links">
+                        <a href="#profile" class="footer-link">
+                            <span class="link-icon">👤</span>
+                            Профиль
+                        </a>
+                        <a href="#skills" class="footer-link">
+                            <span class="link-icon">🎯</span>
+                            Навыки
+                        </a>
+                        <a href="#achievements" class="footer-link">
+                            <span class="link-icon">🏆</span>
+                            Ачивки
+                        </a>
+                        <a href="#contact" class="footer-link">
+                            <span class="link-icon">📞</span>
+                            Контакты
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Технологии</h4>
+                    <div class="tech-stack">
+                        <span class="tech-badge html">HTML5</span>
+                        <span class="tech-badge css">CSS3</span>
+                        <span class="tech-badge js">JavaScript</span>
+                        <span class="tech-badge pixel">Pixel Art</span>
+                        <span class="tech-badge ui">UI/UX</span>
+                    </div>
+                    <div class="footer-achievement">
+                        <span class="achievement-icon">⭐</span>
+                        <span>Люблю создавать красивые и функциональные интерфейсы</span>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Соцсети</h4>
+                    <div class="social-links" id="socialLinks"></div>
+                    <div class="footer-newsletter">
+                        <p>Будь в курсе новых проектов!</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="your@email.com" class="newsletter-input">
+                            <button class="newsletter-btn pixel-button">Подписаться</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2024 <span id="footerName"></span>. Все права защищены.</p>
-                <div class="footer-stats">
-                    <span class="stat">🟢 Онлайн</span>
-                    <span class="stat">🎯 Готов к проектам</span>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 <span id="footerName"></span>. Все права защищены.</p>
+                    <p class="footer-motto">Создано с ❤️ и 🍪</p>
+                </div>
+                <div class="footer-meta">
+                    <div class="meta-info">
+                        <span class="meta-item">🟢 Онлайн</span>
+                        <span class="meta-item">🚀 Готов к коллабам</span>
+                        <span class="meta-item">💼 Открыт для проектов</span>
+                    </div>
+                    <div class="footer-actions">
+                        <button class="action-btn contact-btn pixel-button">Связаться</button>
+                        <button class="action-btn support-btn">Поддержать</button>
+                    </div>
                 </div>
             </div>
         </footer>
 
     </div>
 
-    <script src="config.js"></script>
-    <script src="script.js"></script>
+    <script src="src/js/config.js"></script>
+    <script src="src/js/script.js"></script>
 </body>
 
 </html>

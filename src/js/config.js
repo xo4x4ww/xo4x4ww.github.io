@@ -134,11 +134,9 @@ const CONFIG = {
   // ==================== 📱 СОЦСЕТИ И КОНТАКТЫ ====================
   SOCIAL: {
     // Активные соцсети (менять ссылки!)
-    ok: { url: "https://ok.ru/yourprofile", username: "yourusername" },
-    telegram: { url: "https://t.me/yourusername", username: "yourusername" },
-    vk: { url: "https://vk.com/yourprofile", username: "yourusername" },
-    youtube: { url: "https://youtube.com/yourchannel", username: "yourusername" },
-    github: { url: "https://github.com/yourusername", username: "yourusername" },
-    itchio: { url: "https://yourusername.itch.io", username: "yourusername" },
+    github: { url: "https://github.com/Semyon595", username: "Semyon595" },
+    pinterest: { url: "https://ru.pinterest.com/semyon_5/", username: "semyon_5" },
+    youtube: { url: "https://www.youtube.com/@Semyon_5", username: "@Semyon_5" },
+    itchio: { url: "https://semyon-5.itch.io/", username: "semyon-5" },
   }
 };

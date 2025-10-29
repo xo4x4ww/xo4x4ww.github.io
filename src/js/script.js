@@ -72,11 +72,9 @@ function applySocialSettings() {
     const socialLinks = document.getElementById('socialLinks');
 
     const socials = [
-        { name: 'OK', data: SOCIAL.ok, icon: 'ok.svg' },
-        { name: 'Telegram', data: SOCIAL.telegram, icon: 'telegram.svg' },
-        { name: 'VK', data: SOCIAL.vk, icon: 'vk.svg' },
-        { name: 'YouTube', data: SOCIAL.youtube, icon: 'youtube.svg' },
         { name: 'GitHub', data: SOCIAL.github, icon: 'github.svg' },
+        { name: 'Pinterest', data: SOCIAL.pinterest, icon: 'pinterest.svg' },
+        { name: 'YouTube', data: SOCIAL.youtube, icon: 'youtube.svg' },
         { name: 'Itch.io', data: SOCIAL.itchio, icon: 'itch.svg' }
     ];
 

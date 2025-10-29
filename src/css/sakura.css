@@ -1,0 +1,234 @@
+/* Анимация лепестков сакуры для itch.io */
+
+.sakura-enabled body {
+  background: radial-gradient(circle at 20% 80%, #ffb7d5 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, #ffd6e7 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, #e8f4ff 0%, transparent 50%),
+    linear-gradient(135deg, #fff5f8 0%, #f0f8ff 100%) !important;
+}
+
+.sakura-enabled body::before,
+.sakura-enabled body::after,
+.sakura-enabled html::before,
+.sakura-enabled html::after,
+.sakura-enabled .profile_header::before,
+.sakura-enabled .profile_header::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.8;
+  filter: drop-shadow(1px 1px 3px rgba(255, 128, 171, 0.3));
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transition: all 0.3s ease !important;
+}
+
+/* Форма лепестка - более естественная */
+.sakura-enabled body::before,
+.sakura-enabled body::after,
+.sakura-enabled html::before,
+.sakura-enabled html::after,
+.sakura-enabled .profile_header::before,
+.sakura-enabled .profile_header::after {
+  width: 18px;
+  height: 14px;
+  border-radius: 70% 30% 80% 20% / 60% 40% 60% 40%;
+  clip-path: polygon(
+    50% 0%,
+    80% 20%,
+    100% 50%,
+    80% 80%,
+    50% 100%,
+    20% 80%,
+    0% 50%,
+    20% 20%
+  );
+}
+
+/* Разные размеры и цвета */
+.sakura-enabled body::before {
+  top: -30px;
+  left: 5%;
+  background: #ffb7d5;
+  width: 16px;
+  height: 12px;
+  animation: petal1 15s infinite;
+}
+
+.sakura-enabled body::after {
+  top: -50px;
+  left: 15%;
+  background: #ff80ab;
+  width: 20px;
+  height: 15px;
+  animation: petal2 18s infinite 2s;
+}
+
+.sakura-enabled html::before {
+  top: -40px;
+  left: 25%;
+  background: #ffcdd2;
+  width: 14px;
+  height: 11px;
+  animation: petal3 16s infinite 1s;
+}
+
+.sakura-enabled html::after {
+  top: -60px;
+  left: 35%;
+  background: #f8bbd0;
+  width: 18px;
+  height: 14px;
+  animation: petal4 20s infinite 3s;
+}
+
+.sakura-enabled .profile_header::before {
+  top: -35px;
+  left: 45%;
+  background: #f48fb1;
+  width: 22px;
+  height: 17px;
+  animation: petal5 14s infinite 1.5s;
+}
+
+.sakura-enabled .profile_header::after {
+  top: -45px;
+  left: 55%;
+  background: #ffb7d5;
+  width: 16px;
+  height: 13px;
+  animation: petal6 17s infinite 2.5s;
+}
+
+/* Пиксельный эффект для лепестков */
+.sakura-enabled body::before,
+.sakura-enabled body::after,
+.sakura-enabled html::before,
+.sakura-enabled html::after,
+.sakura-enabled .profile_header::before,
+.sakura-enabled .profile_header::after {
+  image-rendering: auto;
+  transition: all 0.3s ease !important;
+}
+
+.sakura-pixel-mode body::before:hover,
+.sakura-pixel-mode body::after:hover,
+.sakura-pixel-mode html::before:hover,
+.sakura-pixel-mode html::after:hover,
+.sakura-pixel-mode .profile_header::before:hover,
+.sakura-pixel-mode .profile_header::after:hover {
+  image-rendering: pixelated !important;
+  filter: contrast(1.5) brightness(1.2)
+    drop-shadow(2px 2px 4px rgba(255, 128, 171, 0.5)) !important;
+  transform: scale(1.3) rotate(180deg) !important;
+  animation-play-state: paused !important;
+}
+
+@keyframes petal1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(25px, 25vh) rotate(90deg) scale(0.95);
+  }
+  50% {
+    transform: translate(-15px, 50vh) rotate(180deg) scale(0.9);
+  }
+  75% {
+    transform: translate(30px, 75vh) rotate(270deg) scale(0.85);
+  }
+  100% {
+    transform: translate(10px, 120vh) rotate(360deg) scale(0.8);
+  }
+}
+
+@keyframes petal2 {
+  0% {
+    transform: translate(0, 0) rotate(10deg) scale(1);
+  }
+  25% {
+    transform: translate(-20px, 25vh) rotate(100deg) scale(0.95);
+  }
+  50% {
+    transform: translate(35px, 50vh) rotate(190deg) scale(0.9);
+  }
+  75% {
+    transform: translate(-25px, 75vh) rotate(280deg) scale(0.85);
+  }
+  100% {
+    transform: translate(-15px, 120vh) rotate(370deg) scale(0.8);
+  }
+}
+
+@keyframes petal3 {
+  0% {
+    transform: translate(0, 0) rotate(-15deg) scale(1);
+  }
+  25% {
+    transform: translate(30px, 25vh) rotate(75deg) scale(0.95);
+  }
+  50% {
+    transform: translate(-10px, 50vh) rotate(165deg) scale(0.9);
+  }
+  75% {
+    transform: translate(25px, 75vh) rotate(255deg) scale(0.85);
+  }
+  100% {
+    transform: translate(20px, 120vh) rotate(345deg) scale(0.8);
+  }
+}
+
+@keyframes petal4 {
+  0% {
+    transform: translate(0, 0) rotate(20deg) scale(1);
+  }
+  25% {
+    transform: translate(-35px, 25vh) rotate(110deg) scale(0.95);
+  }
+  50% {
+    transform: translate(15px, 50vh) rotate(200deg) scale(0.9);
+  }
+  75% {
+    transform: translate(-30px, 75vh) rotate(290deg) scale(0.85);
+  }
+  100% {
+    transform: translate(-25px, 120vh) rotate(380deg) scale(0.8);
+  }
+}
+
+@keyframes petal5 {
+  0% {
+    transform: translate(0, 0) rotate(-10deg) scale(1);
+  }
+  25% {
+    transform: translate(40px, 25vh) rotate(80deg) scale(0.95);
+  }
+  50% {
+    transform: translate(-20px, 50vh) rotate(170deg) scale(0.9);
+  }
+  75% {
+    transform: translate(35px, 75vh) rotate(260deg) scale(0.85);
+  }
+  100% {
+    transform: translate(15px, 120vh) rotate(350deg) scale(0.8);
+  }
+}
+
+@keyframes petal6 {
+  0% {
+    transform: translate(0, 0) rotate(15deg) scale(1);
+  }
+  25% {
+    transform: translate(-40px, 25vh) rotate(105deg) scale(0.95);
+  }
+  50% {
+    transform: translate(20px, 50vh) rotate(195deg) scale(0.9);
+  }
+  75% {
+    transform: translate(-35px, 75vh) rotate(285deg) scale(0.85);
+  }
+  100% {
+    transform: translate(-20px, 120vh) rotate(375deg) scale(0.8);
+  }
+}

@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/sakura.css">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/sakura.css">
 </head>
 
 <body>
     <div class="dashboard" id="dashboard">
 
         <!-- 🔥 Хедер -->
-        <header class="header pixel-border">
+        <header class="header pixel-border profile_header">
             <div class="status-indicator">
                 <span class="status-dot" id="statusDot"></span>
                 <span class="status-text" id="statusText"></span>
@@ -21,8 +21,16 @@
             <div class="team-branding">
                 <h1 class="team-name" id="teamName"></h1>
             </div>
-            <div class="theme-toggle">
-                <button id="themeToggle" class="pixel-button">🌙</button>
+            <div class="theme-toggle-container">
+                <label class="theme-toggle" for="themeSwitch">
+                    <input type="checkbox" id="themeSwitch" class="theme-toggle-input">
+                    <div class="theme-toggle-track">
+                        <div class="theme-toggle-thumb">
+                            <img src="src/icons/sun.svg" alt="Light theme" class="theme-icon sun-icon">
+                            <img src="src/icons/moon.svg" alt="Dark theme" class="theme-icon moon-icon">
+                        </div>
+                    </div>
+                </label>
             </div>
         </header>
 
@@ -30,9 +38,9 @@
         <main class="main-grid">
 
             <!-- 👤 Профиль -->
-            <section class="card profile-card pixel-border">
+            <section class="card profile-card">
                 <div class="avatar-container">
-                    <img class="avatar" id="avatar" alt="Avatar">
+                    <img class="avatar pixel-element" id="avatar" alt="Avatar">
                 </div>
                 <h2 class="user-name" id="userName"></h2>
                 <p class="user-title" id="userTitle"></p>
@@ -41,19 +49,19 @@
             </section>
 
             <!-- 🛠 Навыки -->
-            <section class="card skills-card pixel-border">
+            <section class="card skills-card">
                 <h3>🎯 Навыки</h3>
                 <div class="skills-list" id="skillsList"></div>
             </section>
 
             <!-- 🏆 Ачивки -->
-            <section class="card achievements-card pixel-border">
+            <section class="card achievements-card">
                 <h3>🏆 Ачивки</h3>
                 <div class="achievements-grid" id="achievementsGrid"></div>
             </section>
 
             <!-- 📈 Активность -->
-            <section class="card activity-card pixel-border">
+            <section class="card activity-card">
                 <h3>📈 Активность</h3>
                 <div class="activity-feed" id="activityFeed">
                     <div class="activity-item">
@@ -67,7 +75,36 @@
 
         <!-- 📱 Футер -->
         <footer class="footer">
-            <div class="social-links" id="socialLinks"></div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <div class="social-links" id="socialLinks"></div>
+                </div>
+                <div class="footer-section">
+                    <h4>Быстрые ссылки</h4>
+                    <div class="footer-links">
+                        <a href="#skills" class="footer-link">Навыки</a>
+                        <a href="#achievements" class="footer-link">Ачивки</a>
+                        <a href="#projects" class="footer-link">Проекты</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>О сайте</h4>
+                    <p class="footer-text">Создано с ❤️ с использованием HTML, CSS и JavaScript</p>
+                    <div class="footer-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 <span id="footerName"></span>. Все права защищены.</p>
+                <div class="footer-stats">
+                    <span class="stat">🟢 Онлайн</span>
+                    <span class="stat">🎯 Готов к проектам</span>
+                </div>
+            </div>
         </footer>
 
     </div>

@@ -9,46 +9,65 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="dashboard" id="dashboard">
 
         <!-- 🔥 Хедер -->
-        <header class="header">
+        <header class="header pixel-border">
             <div class="status-indicator">
                 <span class="status-dot" id="statusDot"></span>
-                <span class="status-text" id="statusText">🟢 В сети</span>
+                <span class="status-text" id="statusText"></span>
+            </div>
+            <div class="team-branding">
+                <h1 class="team-name" id="teamName"></h1>
             </div>
             <div class="theme-toggle">
-                <button id="themeToggle" class="pixel-effect">🌙</button>
+                <button id="themeToggle" class="pixel-button">🌙</button>
             </div>
         </header>
 
-        <!-- 👤 Профиль -->
-        <section class="profile-card">
-            <div class="profile-content">
-                <img class="avatar pixel-effect" id="avatar" alt="Avatar">
-                <h1 class="user-name" id="userName"></h1>
+        <!-- 📊 Основной грид -->
+        <main class="main-grid">
+
+            <!-- 👤 Профиль -->
+            <section class="card profile-card pixel-border">
+                <div class="avatar-container">
+                    <img class="avatar" id="avatar" alt="Avatar">
+                </div>
+                <h2 class="user-name" id="userName"></h2>
                 <p class="user-title" id="userTitle"></p>
+                <p class="custom-status" id="customStatus"></p>
                 <p class="user-bio" id="userBio"></p>
-            </div>
-        </section>
+            </section>
 
-        <!-- 🛠 Навыки -->
-        <section class="skills-card">
-            <h3>🎯 Навыки</h3>
-            <div class="skills-list" id="skillsList"></div>
-        </section>
+            <!-- 🛠 Навыки -->
+            <section class="card skills-card pixel-border">
+                <h3>🎯 Навыки</h3>
+                <div class="skills-list" id="skillsList"></div>
+            </section>
 
-        <!-- 🏆 Ачивки -->
-        <section class="achievements-card">
-            <h3>🏆 Ачивки</h3>
-            <div class="achievements-grid" id="achievementsGrid"></div>
-        </section>
+            <!-- 🏆 Ачивки -->
+            <section class="card achievements-card pixel-border">
+                <h3>🏆 Ачивки</h3>
+                <div class="achievements-grid" id="achievementsGrid"></div>
+            </section>
 
-        <!-- 📱 Соцсети -->
-        <section class="social-card">
-            <h3>📱 Контакты</h3>
+            <!-- 📈 Активность -->
+            <section class="card activity-card pixel-border">
+                <h3>📈 Активность</h3>
+                <div class="activity-feed" id="activityFeed">
+                    <div class="activity-item">
+                        <span class="activity-icon">💾</span>
+                        <span class="activity-text">Загружен конфиг сайта</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- 📱 Футер -->
+        <footer class="footer">
             <div class="social-links" id="socialLinks"></div>
-        </section>
+        </footer>
 
     </div>
 

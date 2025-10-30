@@ -52,7 +52,6 @@ function applyUserSettings() {
     document.getElementById('userTitle').textContent = USER.title;
     document.getElementById('customStatus').textContent = USER.customStatus;
     document.getElementById('userBio').textContent = USER.bio;
-    document.getElementById('teamName').textContent = USER.team;
     document.getElementById('footerName').textContent = USER.name;
 
     const statusDot = document.getElementById('statusDot');

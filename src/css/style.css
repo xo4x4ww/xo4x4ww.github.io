@@ -51,13 +51,18 @@ body {
 .header {
   background: var(--card-color);
   border-bottom: 1px solid var(--border-color);
-  padding: 16px 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 15px 20px;
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .status-indicator {
@@ -81,12 +86,6 @@ body {
 }
 .status-dot.offline {
   background: #f85149;
-}
-
-.team-name {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--accent-color);
 }
 
 .main-grid {
@@ -421,32 +420,14 @@ body {
   transform: scale(1.05);
 }
 
-.pixel-border {
-  border: 2px solid var(--text-color);
-  border-image: linear-gradient(
-      45deg,
-      transparent 25%,
-      var(--accent-color) 25%,
-      var(--accent-color) 50%,
-      transparent 50%,
-      transparent 75%,
-      var(--accent-color) 75%
-    )
-    2;
-  image-rendering: pixelated;
-  transition: all var(--transition-speed) ease;
-}
-
-.pixel-border:hover {
-  filter: contrast(1.2);
-  transform: scale(1.02);
-}
-
 /* ==================== 📱 АДАПТИВНОСТЬ ==================== */
 
 @media (max-width: 768px) {
   .header {
-    padding: 16px;
+    padding: 12px 16px;
+  }
+
+  .header-content {
     flex-direction: column;
     gap: 12px;
     text-align: center;

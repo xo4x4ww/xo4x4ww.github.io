@@ -75,6 +75,7 @@ body {
   align-items: center;
   max-width: 800px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .status-indicator {
@@ -658,7 +659,7 @@ body {
   }
 
   .social-links {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .user-name {
@@ -695,5 +696,9 @@ body {
 
   .theme-label {
     font-size: 12px;
+  }
+
+  .social-links {
+    grid-template-columns: 1fr;
   }
 }

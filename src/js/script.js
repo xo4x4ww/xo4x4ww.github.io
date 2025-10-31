@@ -121,9 +121,10 @@ function applySocialSettings() {
 
     const socials = [
         { name: 'GitHub', data: SOCIAL.github, icon: 'github.svg' },
-        { name: 'Pinterest', data: SOCIAL.pinterest, icon: 'pinterest.svg' },
+        { name: 'Telegram', data: SOCIAL.telegram, icon: 'telegram.svg' },
         { name: 'YouTube', data: SOCIAL.youtube, icon: 'youtube.svg' },
-        { name: 'Itch.io', data: SOCIAL.itchio, icon: 'itch.svg' }
+        { name: 'Itch.io', data: SOCIAL.itchio, icon: 'itch-io.svg' },
+        { name: 'Pinterest', data: SOCIAL.pinterest, icon: 'pinterest.svg' }
     ];
 
     socialLinks.innerHTML = socials

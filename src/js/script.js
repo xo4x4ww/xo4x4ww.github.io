@@ -28,17 +28,17 @@ function applySiteSettings() {
 function applyAppearanceSettings() {
     const { APPEARANCE } = CONFIG;
 
-    // Восстанавливаем тему из localStorage или используем настройку
-    const savedTheme = localStorage.getItem('portfolio-theme');
-    const currentTheme = savedTheme || APPEARANCE.theme;
-
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
-    // Обновляем переключатель темы
-    const themeSwitch = document.getElementById('themeSwitch');
-    if (themeSwitch) {
-        themeSwitch.checked = currentTheme === 'github-dark';
+    let theme = APPEARANCE.theme;
+    if (theme === 'auto') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'github-dark' : 'sakura-light';
     }
+
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme) {
+        theme = savedTheme;
+    }
+
+    document.documentElement.setAttribute('data-theme', theme);
 
     document.documentElement.style.setProperty('--accent-color', APPEARANCE.accentColor);
     document.documentElement.style.setProperty('--bg-color', APPEARANCE.backgroundColor);
@@ -67,7 +67,7 @@ function applyUserSettings() {
     if (USER.avatar) {
         avatar.src = USER.avatar;
         avatar.onerror = function () {
-            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiByeD0iNjAiIGZpbGw9IiMzMDM2M0QiLz4KPHN2ZyB4PSIzMCIgeT0iMzAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4Qjk0OUUiIHN0cm9rZS13aWR0aD0iMiI+CjxwYXRoIGQ9Ik0yMCAyMXYtMmEyIDIgMCAwIDAtMi0yaC0yYTUgNSAwIDAgMC0xMC4wMTQgMEg0YTIgMiAwIDAgMC0yIDJ2MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxjaXJjbGUgY3g9IjEyIiBjeT0iNyIgcj0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo8L3N2Zz4K';
+            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiByeD0iNjAiIGZpbGw9IiNmZmQ2ZTciLz4KPHN2ZyB4PSIzMCIgeT0iMzAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM1YTNkNWMiIHN0cm9rZS13aWR0aD0iMiI+CjxwYXRoIGQ9Ik0yMCAyMXYtMmEyIDIgMCAwIDAtMi0yaC0yYTUgNSAwIDAgMC0xMC4wMTQgMEg0YTIgMiAwIDAgMC0yIDJ2MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxjaXJjbGUgY3g9IjEyIiBjeT0iNyIgcj0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo8L3N2Zz4K';
         }
     }
 }
@@ -76,7 +76,6 @@ function updateOnlineStatus(status) {
     const statusDot = document.getElementById('statusDot');
     const statusText = document.getElementById('statusText');
 
-    // Сбрасываем классы
     statusDot.className = 'status-dot';
     statusText.className = 'status-text';
 
@@ -121,18 +120,16 @@ function applySocialSettings() {
 
     const socials = [
         { name: 'GitHub', data: SOCIAL.github, icon: 'github.svg' },
-        { name: 'Telegram', data: SOCIAL.telegram, icon: 'telegram.svg' },
+        { name: 'Pinterest', data: SOCIAL.pinterest, icon: 'pinterest.svg' },
         { name: 'YouTube', data: SOCIAL.youtube, icon: 'youtube.svg' },
-        { name: 'Itch.io', data: SOCIAL.itchio, icon: 'itch-io.svg' },
-        { name: 'Pinterest', data: SOCIAL.pinterest, icon: 'pinterest.svg' }
+        { name: 'Itch.io', data: SOCIAL.itchio, icon: 'itch.svg' }
     ];
 
     socialLinks.innerHTML = socials
         .filter(social => social.data && social.data.url)
         .map(social => `
-            <a href="${social.data.url}" class="social-link" target="_blank" rel="noopener">
+            <a href="${social.data.url}" class="social-link" target="_blank" rel="noopener" title="${social.name}">
                 <img src="src/icons/${social.icon}" alt="${social.name}" class="social-icon">
-                ${social.name}
             </a>
         `).join('');
 }
@@ -153,18 +150,6 @@ function applySkillsSettings() {
             ${skill.description ? `<div class="skill-description">${skill.description}</div>` : ''}
         </div>
     `).join('');
-
-    // Запускаем анимацию прогресс-баров
-    setTimeout(() => {
-        const progressBars = document.querySelectorAll('.progress-fill');
-        progressBars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0%';
-            setTimeout(() => {
-                bar.style.width = width;
-            }, 100);
-        });
-    }, 500);
 }
 
 function applyAchievementsSettings() {
@@ -199,26 +184,49 @@ function applySakuraSettings() {
 function setupEventListeners() {
     const themeSwitch = document.getElementById('themeSwitch');
     if (themeSwitch) {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        themeSwitch.checked = currentTheme.includes('dark');
+
         themeSwitch.addEventListener('change', toggleTheme);
+    }
+
+    // Анимация прогресс-баров при скролле
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progressBars = entry.target.querySelectorAll('.progress-fill');
+                progressBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+            }
+        });
+    }, observerOptions);
+
+    const skillsCard = document.querySelector('.skills-card');
+    if (skillsCard) {
+        observer.observe(skillsCard);
     }
 }
 
 function toggleTheme() {
     const themeSwitch = document.getElementById('themeSwitch');
-    const newTheme = themeSwitch.checked ? 'github-dark' : 'github-light';
+    const newTheme = themeSwitch.checked ? 'github-dark' : 'sakura-light';
 
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('portfolio-theme', newTheme);
 }
 
 // Восстановление темы при загрузке
-document.addEventListener('DOMContentLoaded', function () {
-    const savedTheme = localStorage.getItem('portfolio-theme');
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        const themeSwitch = document.getElementById('themeSwitch');
-        if (themeSwitch) {
-            themeSwitch.checked = savedTheme === 'github-dark';
-        }
-    }
-});
+const savedTheme = localStorage.getItem('portfolio-theme');
+if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+}

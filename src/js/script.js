@@ -20,7 +20,7 @@ function loadConfig() {
 }
 
 function applySiteSettings() {
-    document.getElementById('pageTitle').textContent = CONFIG.SITE.title;
+    document.title = CONFIG.SITE.title;
 }
 
 function applyAppearanceSettings() {
@@ -71,11 +71,11 @@ function applySocialSettings() {
     const socialLinks = document.getElementById('socialLinks');
 
     const socials = [
-        { name: 'GitHub', data: SOCIAL.github, icon: 'github.svg' },
-        { name: 'Pinterest', data: SOCIAL.pinterest, icon: 'pinterest.svg' },
-        { name: 'YouTube', data: SOCIAL.youtube, icon: 'youtube.svg' },
-        { name: 'Itch.io', data: SOCIAL.itchio, icon: 'itch-io.svg' },
-        { name: 'Telegram', data: SOCIAL.telegram, icon: 'telegram.svg' }
+        { name: 'GitHub', data: SOCIAL.github, icon: 'Github.svg' },
+        { name: 'Pinterest', data: SOCIAL.pinterest, icon: 'Pinterest.svg' },
+        { name: 'YouTube', data: SOCIAL.youtube, icon: 'YouTube.svg' },
+        { name: 'Itch.io', data: SOCIAL.itchio, icon: 'Itch-io.svg' },
+        { name: 'Telegram', data: SOCIAL.telegram, icon: 'Telegram.svg' }
     ];
 
     socialLinks.innerHTML = socials

@@ -123,7 +123,8 @@ function applySocialSettings() {
         { name: 'GitHub', data: SOCIAL.github, icon: 'github.svg' },
         { name: 'Pinterest', data: SOCIAL.pinterest, icon: 'pinterest.svg' },
         { name: 'YouTube', data: SOCIAL.youtube, icon: 'youtube.svg' },
-        { name: 'Itch.io', data: SOCIAL.itchio, icon: 'itch-io.svg' }
+        { name: 'Itch.io', data: SOCIAL.itchio, icon: 'itch-io.svg' },
+        { name: 'Telegram', data: SOCIAL.telegram, icon: 'telegram.svg' }
     ];
 
     socialLinks.innerHTML = socials
@@ -146,7 +147,7 @@ function applySkillsSettings() {
                 ${SKILLS.showPercentage ? `<span class="skill-percent">${skill.level}%</span>` : ''}
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="background: ${skill.color}"></div>
+                <div class="progress-fill" data-level="${skill.level}" style="background: ${skill.color}"></div>
             </div>
             ${skill.description ? `<div class="skill-description">${skill.description}</div>` : ''}
         </div>
@@ -199,9 +200,10 @@ function setupEventListeners() {
             if (entry.isIntersecting) {
                 const progressBars = entry.target.querySelectorAll('.progress-fill');
                 progressBars.forEach(bar => {
-                    const skillItem = bar.closest('.skill-item');
-                    const level = skillItem.getAttribute('data-level');
-                    bar.style.width = level + '%';
+                    const level = bar.getAttribute('data-level');
+                    setTimeout(() => {
+                        bar.style.width = level + '%';
+                    }, 200);
                 });
                 entry.target.classList.add('animated');
             }
@@ -220,4 +222,19 @@ function toggleTheme() {
 
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('portfolio-theme', newTheme);
+
+    // Принудительно применяем настройки внешнего вида
+    applyAppearanceSettings();
 }
+
+// Восстановление темы при загрузке
+window.addEventListener('load', function () {
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        const themeSwitch = document.getElementById('themeSwitch');
+        if (themeSwitch) {
+            themeSwitch.checked = savedTheme === 'github-dark';
+        }
+    }
+});

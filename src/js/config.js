@@ -33,7 +33,7 @@ const CONFIG = {
 
   // ==================== 🎨 ВНЕШНИЙ ВИД ====================
   APPEARANCE: {
-    theme: "sakura-light", // Новая светлая сакурная тема
+    theme: "sakura-light", // sakura-light / github-dark
     accentColor: "#ff6b9d", // Нежно-розовый акцент
     backgroundColor: "#fffafc", // Очень светлый розовый фон
     cardColor: "#ffffff", // Белые карточки
@@ -83,6 +83,13 @@ const CONFIG = {
         style: "quality",
         description: "Стили и адаптивный дизайн"
       },
+      {
+        name: "JavaScript",
+        level: 75,
+        color: "#ffd46f", // Желтый
+        style: "quality",
+        description: "Интерактивность и анимации"
+      }
     ],
     showPercentage: true,
   },
@@ -117,6 +124,24 @@ const CONFIG = {
         color: "#6db8ff", // Голубой
         style: "quality"
       },
+      {
+        id: "community",
+        name: "Community Builder",
+        unlocked: true,
+        icon: "👥",
+        description: "Создал игровое комьюнити",
+        color: "#ff9e6d", // Оранжевый
+        style: "pixel"
+      },
+      {
+        id: "prototype",
+        name: "Prototype Master",
+        unlocked: false,
+        icon: "🚀",
+        description: "10+ игровых прототипов",
+        color: "#ff6b6b", // Красный
+        style: "quality"
+      }
     ],
     showLocked: true,
   },
@@ -127,5 +152,6 @@ const CONFIG = {
     pinterest: { url: "https://ru.pinterest.com/semyon_5/", username: "semyon_5" },
     youtube: { url: "https://www.youtube.com/@Semyon_5", username: "@Semyon_5" },
     itchio: { url: "https://semyon-5.itch.io/", username: "semyon-5" },
+    telegram: { url: "https://t.me/Semyon_5", username: "Semyon_5" }
   }
 };

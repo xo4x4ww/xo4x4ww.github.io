@@ -1,5 +1,4 @@
-/* Анимация лепестков сакуры для светлой темы */
-
+/* sakura.css - анимация лепестков сакуры */
 .sakura-enabled {
   position: relative;
   overflow-x: hidden;

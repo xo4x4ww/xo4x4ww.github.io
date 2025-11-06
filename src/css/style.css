@@ -1,5 +1,4 @@
-/* ==================== 🎮 SAKURA LIGHT THEME + PIXEL EFFECTS ==================== */
-
+/* style.css - основные стили портфолио */
 * {
   margin: 0;
   padding: 0;
@@ -12,9 +11,6 @@
   --card-color: #ffffff;
   --text-color: #5a3d5c;
   --border-color: #ffd6e7;
-  --success-color: #6dffb8;
-  --warning-color: #ffd46f;
-  --error-color: #ff6b6b;
   --transition-speed: 0.3s;
 }
 
@@ -24,9 +20,6 @@
   --card-color: #ffffff;
   --text-color: #5a3d5c;
   --border-color: #ffd6e7;
-  --success-color: #6dffb8;
-  --warning-color: #ffd46f;
-  --error-color: #ff6b6b;
 }
 
 [data-theme="github-dark"] {
@@ -35,9 +28,6 @@
   --card-color: #161b22;
   --text-color: #f0f6fc;
   --border-color: #30363d;
-  --success-color: #3fb950;
-  --warning-color: #d29922;
-  --error-color: #f85149;
 }
 
 body {
@@ -48,8 +38,6 @@ body {
   min-height: 100vh;
   transition: background-color var(--transition-speed) ease;
 }
-
-/* ==================== 📱 ВЕРТИКАЛЬНЫЙ LAYOUT ==================== */
 
 .dashboard {
   min-height: 100vh;
@@ -70,94 +58,10 @@ body {
 
 .header-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   max-width: 800px;
   margin: 0 auto;
-}
-
-.status-indicator {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  transition: all var(--transition-speed) ease;
-  position: relative;
-  display: inline-block;
-}
-
-.status-dot::after {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-  opacity: 0.7;
-}
-
-.status-dot.online {
-  background: var(--success-color);
-}
-
-.status-dot.online::after {
-  border: 1px solid var(--success-color);
-}
-
-.status-dot.away {
-  background: var(--warning-color);
-}
-
-.status-dot.away::after {
-  border: 1px solid var(--warning-color);
-}
-
-.status-dot.offline {
-  background: var(--error-color);
-}
-
-.status-dot.offline::after {
-  border: 1px solid var(--error-color);
-}
-
-.status-text {
-  font-weight: 500;
-  transition: all var(--transition-speed) ease;
-}
-
-.status-text.online {
-  color: var(--success-color);
-}
-
-.status-text.away {
-  color: var(--warning-color);
-}
-
-.status-text.offline {
-  color: var(--error-color);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  70% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
 }
 
 .main-grid {
@@ -209,8 +113,6 @@ body {
 .card:hover::before {
   opacity: 1;
 }
-
-/* ==================== 👤 ПРОФИЛЬ ==================== */
 
 .profile-card {
   display: flex;
@@ -293,8 +195,6 @@ body {
   overflow: visible;
 }
 
-/* ==================== 🛠 НАВЫКИ ==================== */
-
 .skills-card h3 {
   margin-bottom: 24px;
   font-size: 20px;
@@ -325,20 +225,21 @@ body {
 
 .progress-bar {
   width: 100%;
-  height: 12px;
+  height: 20px;
   background: var(--border-color);
-  border-radius: 6px;
+  border-radius: 10px;
   overflow: hidden;
   position: relative;
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
 }
 
 .progress-fill {
   height: 100%;
-  border-radius: 6px;
+  border-radius: 8px;
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   width: 0% !important;
+  min-width: 10px;
 }
 
 .skills-card.animated .progress-fill {
@@ -375,8 +276,6 @@ body {
     transform: translateX(100%);
   }
 }
-
-/* ==================== 🏆 АЧИВКИ ==================== */
 
 .achievements-card h3 {
   margin-bottom: 24px;
@@ -447,8 +346,6 @@ body {
   line-height: 1.4;
 }
 
-/* ==================== 🔄 ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ==================== */
-
 .theme-toggle-container {
   display: flex;
   align-items: center;
@@ -500,30 +397,7 @@ body {
   background: var(--accent-color);
   border-radius: 50%;
   transition: all var(--transition-speed) ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.theme-icon {
-  width: 12px;
-  height: 12px;
-  transition: all var(--transition-speed) ease;
-  position: absolute;
-}
-
-.sun-icon {
-  opacity: 1;
-  transform: scale(1);
-  color: #ffd700;
-}
-
-.moon-icon {
-  opacity: 0;
-  transform: scale(0);
-  color: #f0f6fc;
 }
 
 .theme-toggle-input:checked + .theme-toggle-track .theme-toggle-thumb {
@@ -531,23 +405,11 @@ body {
   background: var(--accent-color);
 }
 
-.theme-toggle-input:checked + .theme-toggle-track .sun-icon {
-  opacity: 0;
-  transform: scale(0);
-}
-
-.theme-toggle-input:checked + .theme-toggle-track .moon-icon {
-  opacity: 1;
-  transform: scale(1);
-}
-
 .theme-label {
   color: var(--text-color);
   font-size: 14px;
   font-weight: 500;
 }
-
-/* ==================== 📱 ФУТЕР ==================== */
 
 .footer {
   background: var(--card-color);
@@ -620,8 +482,6 @@ body {
   font-size: 14px;
 }
 
-/* ==================== 🎯 ПИКСЕЛЬНЫЕ ЭФФЕКТЫ ==================== */
-
 .pixel-element {
   image-rendering: pixelated;
   filter: contrast(1.1);
@@ -633,17 +493,13 @@ body {
   transform: scale(1.05);
 }
 
-/* ==================== 📱 АДАПТИВНОСТЬ ==================== */
-
 @media (max-width: 768px) {
   .header {
     padding: 12px 16px;
   }
 
   .header-content {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
+    justify-content: center;
   }
 
   .main-grid {
@@ -715,9 +571,6 @@ body {
   }
 }
 
-/* ==================== 🎮 ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ==================== */
-
-/* Убрали скролл из биографии */
 .user-bio-container {
   overflow: visible;
 }
@@ -728,7 +581,6 @@ body {
   padding-right: 0;
 }
 
-/* Плавное появление элементов */
 .card {
   animation: fadeInUp 0.6s ease-out;
 }
@@ -744,14 +596,12 @@ body {
   }
 }
 
-/* Улучшение фокуса для доступности */
 .social-link:focus,
 .theme-toggle:focus {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
 
-/* Оптимизация для высоких экранов */
 @media (min-height: 800px) {
   .main-grid {
     gap: 30px;
@@ -763,20 +613,17 @@ body {
   }
 }
 
-/* Исправление для темной темы и сакуры */
 [data-theme="github-dark"] .sakura-petal {
   filter: drop-shadow(1px 1px 3px rgba(88, 166, 255, 0.4));
   opacity: 0.5;
 }
 
-/* Улучшение контрастности для доступности */
 [data-theme="github-dark"] .user-bio,
 [data-theme="github-dark"] .skill-description,
 [data-theme="github-dark"] .achievement-desc {
   color: #a0a0a0;
 }
 
-/* Оптимизация анимаций для производительности */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -785,7 +632,6 @@ body {
   }
 }
 
-/* Улучшение видимости прогресс-баров */
 .progress-fill {
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
 }

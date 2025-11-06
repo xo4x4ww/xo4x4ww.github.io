@@ -1,10 +1,8 @@
-// ==================== 🚀 ГЛАВНЫЙ СКРИПТ ====================
-
+/* script.js - главный скрипт портфолио */
 document.addEventListener('DOMContentLoaded', function () {
     initializeSite();
     loadConfig();
     setupEventListeners();
-    setupOnlineStatus();
 });
 
 function initializeSite() {
@@ -28,19 +26,16 @@ function applySiteSettings() {
 function applyAppearanceSettings() {
     const { APPEARANCE } = CONFIG;
 
-    // Восстанавливаем тему из localStorage
     const savedTheme = localStorage.getItem('portfolio-theme');
     const theme = savedTheme || APPEARANCE.theme;
 
     document.documentElement.setAttribute('data-theme', theme);
 
-    // Устанавливаем переключатель в правильное положение
     const themeSwitch = document.getElementById('themeSwitch');
     if (themeSwitch) {
         themeSwitch.checked = theme === 'github-dark';
     }
 
-    // Применяем CSS переменные
     document.documentElement.style.setProperty('--accent-color', APPEARANCE.accentColor);
     document.documentElement.style.setProperty('--bg-color', APPEARANCE.backgroundColor);
     document.documentElement.style.setProperty('--card-color', APPEARANCE.cardColor);
@@ -62,8 +57,6 @@ function applyUserSettings() {
     document.getElementById('userBio').textContent = USER.bio;
     document.getElementById('footerName').textContent = USER.name;
 
-    updateOnlineStatus(USER.status);
-
     const avatar = document.getElementById('avatar');
     if (USER.avatar) {
         avatar.src = USER.avatar;
@@ -71,48 +64,6 @@ function applyUserSettings() {
             this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiByeD0iNjAiIGZpbGw9IiNmZmQ2ZTciLz4KPHN2ZyB4PSIzMCIgeT0iMzAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM1YTNkNWMiIHN0cm9rZS13aWR0aD0iMiI+CjxwYXRoIGQ9Ik0yMCAyMXYtMmEyIDIgMCAwIDAtMi0yaC0yYTUgNSAwIDAgMC0xMC4wMTQgMEg0YTIgMiAwIDAgMC0yIDJ2MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxjaXJjbGUgY3g9IjEyIiBjeT0iNyIgcj0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo8L3N2Zz4K';
         }
     }
-}
-
-function updateOnlineStatus(status) {
-    const statusDot = document.getElementById('statusDot');
-    const statusText = document.getElementById('statusText');
-
-    statusDot.className = 'status-dot';
-    statusText.className = 'status-text';
-
-    switch (status) {
-        case 'online':
-            statusDot.classList.add('online');
-            statusText.textContent = '🟢 ОНЛАЙН';
-            statusText.classList.add('online');
-            break;
-        case 'away':
-            statusDot.classList.add('away');
-            statusText.textContent = '🟡 ОТОШЕЛ';
-            statusText.classList.add('away');
-            break;
-        case 'offline':
-            statusDot.classList.add('offline');
-            statusText.textContent = '🔴 НЕ В СЕТИ';
-            statusText.classList.add('offline');
-            break;
-        default:
-            statusDot.classList.add('online');
-            statusText.textContent = '🟢 ОНЛАЙН';
-            statusText.classList.add('online');
-    }
-}
-
-function setupOnlineStatus() {
-    // Симуляция изменения статуса для демонстрации
-    let statusIndex = 0;
-    const statuses = ['online', 'away', 'offline'];
-
-    // Каждые 30 секунд меняем статус (только для демо)
-    setInterval(() => {
-        statusIndex = (statusIndex + 1) % statuses.length;
-        updateOnlineStatus(statuses[statusIndex]);
-    }, 30000);
 }
 
 function applySocialSettings() {
@@ -189,7 +140,6 @@ function setupEventListeners() {
         themeSwitch.addEventListener('change', toggleTheme);
     }
 
-    // Анимация прогресс-баров при скролле
     const observerOptions = {
         threshold: 0.3,
         rootMargin: '0px 0px -50px 0px'
@@ -223,11 +173,9 @@ function toggleTheme() {
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('portfolio-theme', newTheme);
 
-    // Принудительно применяем настройки внешнего вида
     applyAppearanceSettings();
 }
 
-// Восстановление темы при загрузке
 window.addEventListener('load', function () {
     const savedTheme = localStorage.getItem('portfolio-theme');
     if (savedTheme) {

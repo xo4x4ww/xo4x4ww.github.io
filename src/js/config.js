@@ -1,16 +1,11 @@
-// ==================== ⚙️ КОНФИГ ПОРТФОЛИО ====================
-
+/* config.js - конфигурация портфолио */
 const CONFIG = {
-  // ==================== 🌐 НАСТРОЙКИ САЙТА ====================
   SITE: {
     title: "Semyon_5"
   },
-
-  // ==================== 👤 ОСНОВНЫЕ НАСТРОЙКИ ====================
   USER: {
     name: "Семён",
     title: "Game Dev Enthusiast | Pixel Art Lover",
-    status: "online", // online / away / offline
     customStatus: "Создаю игры с душой!",
     avatar: "src/images/avatar.png",
     bio: `🎮 Game Dev Enthusiast | Pixel Art Lover | Mechanics Explorer
@@ -30,71 +25,63 @@ const CONFIG = {
 🚀 Прототипы безумных идей из геймджемов
 💫 И ту самую магию, ради которой мы любим инди-игры`,
   },
-
-  // ==================== 🎨 ВНЕШНИЙ ВИД ====================
   APPEARANCE: {
-    theme: "sakura-light", // sakura-light / github-dark
-    accentColor: "#ff6b9d", // Нежно-розовый акцент
-    backgroundColor: "#fffafc", // Очень светлый розовый фон
-    cardColor: "#ffffff", // Белые карточки
-    textColor: "#5a3d5c", // Тёмно-фиолетовый текст
-    borderColor: "#ffd6e7", // Розовая граница
+    theme: "sakura-light",
+    accentColor: "#ff6b9d",
+    backgroundColor: "#fffafc",
+    cardColor: "#ffffff",
+    textColor: "#5a3d5c",
+    borderColor: "#ffd6e7",
     cardBlur: 0,
     animations: true,
     backgroundImage: "",
     smoothTransitions: true,
     transitionSpeed: 0.3,
   },
-
-  // ==================== 🎮 АНИМАЦИЯ САКУРЫ ====================
   SAKURA: {
     enabled: true,
     pixelOnHover: true,
   },
-
-  // ==================== 🛠 НАВЫКИ И ПРОГРЕСС-БАРЫ ====================
   SKILLS: {
     items: [
       {
         name: "Game Design",
         level: 85,
-        color: "#ff9e6d", // Оранжево-розовый
+        color: "#ff9e6d",
         style: "pixel",
         description: "Проектирование игровых механик"
       },
       {
         name: "Pixel Art",
         level: 80,
-        color: "#d46fd4", // Фиолетовый
+        color: "#d46fd4",
         style: "pixel",
         description: "Создание спрайтов и анимаций"
       },
       {
         name: "HTML",
         level: 90,
-        color: "#ff6b9d", // Розовый
+        color: "#ff6b9d",
         style: "quality",
         description: "Семантическая верстка"
       },
       {
         name: "CSS",
         level: 85,
-        color: "#6db8ff", // Голубой
+        color: "#6db8ff",
         style: "quality",
         description: "Стили и адаптивный дизайн"
       },
       {
         name: "JavaScript",
         level: 75,
-        color: "#ffd46f", // Желтый
+        color: "#ffd46f",
         style: "quality",
         description: "Интерактивность и анимации"
       }
     ],
     showPercentage: true,
   },
-
-  // ==================== 🏆 АЧИВКИ И ДОСТИЖЕНИЯ ====================
   ACHIEVEMENTS: {
     items: [
       {
@@ -103,7 +90,7 @@ const CONFIG = {
         unlocked: true,
         icon: "🎮",
         description: "Запустил первую игру",
-        color: "#6dffb8", // Зелёный
+        color: "#6dffb8",
         style: "pixel"
       },
       {
@@ -112,7 +99,7 @@ const CONFIG = {
         unlocked: true,
         icon: "🎨",
         description: "10+ созданных спрайтов",
-        color: "#d46fd4", // Фиолетовый
+        color: "#d46fd4",
         style: "pixel"
       },
       {
@@ -121,7 +108,7 @@ const CONFIG = {
         unlocked: true,
         icon: "⏰",
         description: "Участвовал в 1+ геймджемах",
-        color: "#6db8ff", // Голубой
+        color: "#6db8ff",
         style: "quality"
       },
       {
@@ -130,7 +117,7 @@ const CONFIG = {
         unlocked: true,
         icon: "👥",
         description: "Создал игровое комьюнити",
-        color: "#ff9e6d", // Оранжевый
+        color: "#ff9e6d",
         style: "pixel"
       },
       {
@@ -139,14 +126,12 @@ const CONFIG = {
         unlocked: false,
         icon: "🚀",
         description: "10+ игровых прототипов",
-        color: "#ff6b6b", // Красный
+        color: "#ff6b6b",
         style: "quality"
       }
     ],
     showLocked: true,
   },
-
-  // ==================== 📱 СОЦСЕТИ И КОНТАКТЫ ====================
   SOCIAL: {
     github: { url: "https://github.com/Semyon595", username: "Semyon595" },
     pinterest: { url: "https://ru.pinterest.com/semyon_5/", username: "semyon_5" },

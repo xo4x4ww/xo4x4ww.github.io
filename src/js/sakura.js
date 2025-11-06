@@ -1,11 +1,9 @@
-// sakura.js - Дополнительный скрипт для анимации сакуры
-
+/* sakura.js - анимация лепестков сакуры */
 document.addEventListener('DOMContentLoaded', function () {
     initializeSakura();
 });
 
 function initializeSakura() {
-    // Проверяем конфиг и настройки сакуры
     if (window.CONFIG && window.CONFIG.SAKURA && window.CONFIG.SAKURA.enabled) {
         createSakuraPetals();
     }

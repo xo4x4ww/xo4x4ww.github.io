@@ -28,18 +28,19 @@ function applySiteSettings() {
 function applyAppearanceSettings() {
     const { APPEARANCE } = CONFIG;
 
-    let theme = APPEARANCE.theme;
-    if (theme === 'auto') {
-        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'github-dark' : 'sakura-light';
-    }
-
+    // Восстанавливаем тему из localStorage
     const savedTheme = localStorage.getItem('portfolio-theme');
-    if (savedTheme) {
-        theme = savedTheme;
-    }
+    const theme = savedTheme || APPEARANCE.theme;
 
     document.documentElement.setAttribute('data-theme', theme);
 
+    // Устанавливаем переключатель в правильное положение
+    const themeSwitch = document.getElementById('themeSwitch');
+    if (themeSwitch) {
+        themeSwitch.checked = theme === 'github-dark';
+    }
+
+    // Применяем CSS переменные
     document.documentElement.style.setProperty('--accent-color', APPEARANCE.accentColor);
     document.documentElement.style.setProperty('--bg-color', APPEARANCE.backgroundColor);
     document.documentElement.style.setProperty('--card-color', APPEARANCE.cardColor);
@@ -122,7 +123,7 @@ function applySocialSettings() {
         { name: 'GitHub', data: SOCIAL.github, icon: 'github.svg' },
         { name: 'Pinterest', data: SOCIAL.pinterest, icon: 'pinterest.svg' },
         { name: 'YouTube', data: SOCIAL.youtube, icon: 'youtube.svg' },
-        { name: 'Itch.io', data: SOCIAL.itchio, icon: 'itch.svg' }
+        { name: 'Itch.io', data: SOCIAL.itchio, icon: 'itch-io.svg' }
     ];
 
     socialLinks.innerHTML = socials
@@ -139,13 +140,13 @@ function applySkillsSettings() {
     const skillsList = document.getElementById('skillsList');
 
     skillsList.innerHTML = SKILLS.items.map(skill => `
-        <div class="skill-item">
+        <div class="skill-item" data-level="${skill.level}">
             <div class="skill-header">
                 <span class="skill-name">${skill.name}</span>
                 ${SKILLS.showPercentage ? `<span class="skill-percent">${skill.level}%</span>` : ''}
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: ${skill.level}%; background: ${skill.color}"></div>
+                <div class="progress-fill" style="background: ${skill.color}"></div>
             </div>
             ${skill.description ? `<div class="skill-description">${skill.description}</div>` : ''}
         </div>
@@ -184,15 +185,12 @@ function applySakuraSettings() {
 function setupEventListeners() {
     const themeSwitch = document.getElementById('themeSwitch');
     if (themeSwitch) {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        themeSwitch.checked = currentTheme === 'github-dark';
-
         themeSwitch.addEventListener('change', toggleTheme);
     }
 
     // Анимация прогресс-баров при скролле
     const observerOptions = {
-        threshold: 0.5,
+        threshold: 0.3,
         rootMargin: '0px 0px -50px 0px'
     };
 
@@ -201,12 +199,11 @@ function setupEventListeners() {
             if (entry.isIntersecting) {
                 const progressBars = entry.target.querySelectorAll('.progress-fill');
                 progressBars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0%';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 100);
+                    const skillItem = bar.closest('.skill-item');
+                    const level = skillItem.getAttribute('data-level');
+                    bar.style.width = level + '%';
                 });
+                entry.target.classList.add('animated');
             }
         });
     }, observerOptions);
@@ -224,17 +221,3 @@ function toggleTheme() {
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('portfolio-theme', newTheme);
 }
-
-// Восстановление темы при загрузке
-document.addEventListener('DOMContentLoaded', function () {
-    const savedTheme = localStorage.getItem('portfolio-theme');
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        
-        // Установка правильного состояния переключателя
-        const themeSwitch = document.getElementById('themeSwitch');
-        if (themeSwitch) {
-            themeSwitch.checked = savedTheme === 'github-dark';
-        }
-    }
-});

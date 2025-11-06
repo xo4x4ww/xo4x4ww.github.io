@@ -5,12 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function initializeSakura() {
-    // Проверяем, активна ли сакура в конфиге
-    if (!window.CONFIG || !window.CONFIG.SAKURA || !window.CONFIG.SAKURA.enabled) {
-        return;
+    // Проверяем конфиг и настройки сакуры
+    if (window.CONFIG && window.CONFIG.SAKURA && window.CONFIG.SAKURA.enabled) {
+        createSakuraPetals();
     }
-
-    createSakuraPetals();
 }
 
 function createSakuraPetals() {

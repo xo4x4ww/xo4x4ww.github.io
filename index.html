@@ -2,35 +2,34 @@
 <html lang="ru">
 
 <head>
-    <!-- Другие настройки сайта -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">Semyon_5</title>
 
-
-    <!-- Подключаем другие файлы -->
-    <script src="src/js/config.js"></script>
-    <script src="src/js/script.js"></script>
-    <script src="src/js/sakura.js"></script>
-
+    <!-- Сначала стили -->
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/sakura.css">
 
-
     <!-- Яндекс метрика -->
     <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105123582', 'ym');
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-    ym(105123582, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/105123582" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+        ym(105123582, 'init', {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/105123582" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 
 <body>
@@ -94,6 +93,11 @@
         </footer>
 
     </div>
+
+    <!-- Скрипты в конце body -->
+    <script src="src/js/config.js"></script>
+    <script src="src/js/script.js"></script>
+    <script src="src/js/sakura.js"></script>
 </body>
 
 </html>

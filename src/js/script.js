@@ -185,7 +185,7 @@ function setupEventListeners() {
     const themeSwitch = document.getElementById('themeSwitch');
     if (themeSwitch) {
         const currentTheme = document.documentElement.getAttribute('data-theme');
-        themeSwitch.checked = currentTheme.includes('dark');
+        themeSwitch.checked = currentTheme === 'github-dark';
 
         themeSwitch.addEventListener('change', toggleTheme);
     }
@@ -226,7 +226,15 @@ function toggleTheme() {
 }
 
 // Восстановление темы при загрузке
-const savedTheme = localStorage.getItem('portfolio-theme');
-if (savedTheme) {
-    document.documentElement.setAttribute('data-theme', savedTheme);
-}
+document.addEventListener('DOMContentLoaded', function () {
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        // Установка правильного состояния переключателя
+        const themeSwitch = document.getElementById('themeSwitch');
+        if (themeSwitch) {
+            themeSwitch.checked = savedTheme === 'github-dark';
+        }
+    }
+});

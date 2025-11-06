@@ -331,7 +331,11 @@ body {
   border-radius: 4px;
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  width: 0% !important; /* Начальное состояние */
+  width: 0% !important;
+}
+
+.skills-card.animated .progress-fill {
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .progress-fill::after {
@@ -691,5 +695,93 @@ body {
 
   .social-links {
     justify-content: center;
+  }
+
+  .theme-toggle {
+    padding: 6px 8px;
+  }
+
+  .theme-label {
+    font-size: 12px;
+  }
+}
+
+/* ==================== 🎮 ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ==================== */
+
+/* Улучшение читаемости для длинного текста */
+.user-bio {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.user-bio::-webkit-scrollbar {
+  width: 4px;
+}
+
+.user-bio::-webkit-scrollbar-track {
+  background: var(--border-color);
+  border-radius: 2px;
+}
+
+.user-bio::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+/* Плавное появление элементов */
+.card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Улучшение фокуса для доступности */
+.social-link:focus,
+.theme-toggle:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Оптимизация для высоких экранов */
+@media (min-height: 800px) {
+  .main-grid {
+    gap: 30px;
+    padding: 30px 20px;
+  }
+
+  .card {
+    padding: 30px;
+  }
+}
+
+/* Исправление для темной темы и сакуры */
+[data-theme="github-dark"] .sakura-petal {
+  filter: drop-shadow(1px 1px 3px rgba(88, 166, 255, 0.4));
+  opacity: 0.5;
+}
+
+/* Улучшение контрастности для доступности */
+[data-theme="github-dark"] .user-bio,
+[data-theme="github-dark"] .skill-description,
+[data-theme="github-dark"] .achievement-desc {
+  color: #a0a0a0;
+}
+
+/* Оптимизация анимаций для производительности */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

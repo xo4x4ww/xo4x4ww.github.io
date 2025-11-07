@@ -98,7 +98,7 @@ function applySkillsSettings() {
                 ${SKILLS.showPercentage ? `<span class="skill-percent">${skill.level}%</span>` : ''}
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" data-level="${skill.level}" style="background: ${skill.color}"></div>
+                <div class="progress-fill" data-level="${skill.level}" style="width: ${skill.level}%; background: ${skill.color}"></div>
             </div>
             ${skill.description ? `<div class="skill-description">${skill.description}</div>` : ''}
         </div>
@@ -138,31 +138,6 @@ function setupEventListeners() {
     const themeSwitch = document.getElementById('themeSwitch');
     if (themeSwitch) {
         themeSwitch.addEventListener('change', toggleTheme);
-    }
-
-    const observerOptions = {
-        threshold: 0.3,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const progressBars = entry.target.querySelectorAll('.progress-fill');
-                progressBars.forEach(bar => {
-                    const level = bar.getAttribute('data-level');
-                    setTimeout(() => {
-                        bar.style.width = level + '%';
-                    }, 200);
-                });
-                entry.target.classList.add('animated');
-            }
-        });
-    }, observerOptions);
-
-    const skillsCard = document.querySelector('.skills-card');
-    if (skillsCard) {
-        observer.observe(skillsCard);
     }
 }
 

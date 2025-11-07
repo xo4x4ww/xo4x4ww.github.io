@@ -71,13 +71,6 @@ const CONFIG = {
         color: "#6db8ff",
         style: "quality",
         description: "Стили и адаптивный дизайн"
-      },
-      {
-        name: "JavaScript",
-        level: 75,
-        color: "#ffd46f",
-        style: "quality",
-        description: "Интерактивность и анимации"
       }
     ],
     showPercentage: true,

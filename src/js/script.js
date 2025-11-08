@@ -92,13 +92,13 @@ function applySkillsSettings() {
     const skillsList = document.getElementById('skillsList');
 
     skillsList.innerHTML = SKILLS.items.map(skill => `
-        <div class="skill-item" data-level="${skill.level}">
+        <div class="skill-item">
             <div class="skill-header">
                 <span class="skill-name">${skill.name}</span>
                 ${SKILLS.showPercentage ? `<span class="skill-percent">${skill.level}%</span>` : ''}
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" data-level="${skill.level}" style="width: ${skill.level}%; background: ${skill.color}"></div>
+                <div class="progress-fill" style="width: ${skill.level}%; background: ${skill.color}"></div>
             </div>
             ${skill.description ? `<div class="skill-description">${skill.description}</div>` : ''}
         </div>

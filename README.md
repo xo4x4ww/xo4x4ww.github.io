@@ -1,4 +1,4 @@
-# 🎮 Мое Игровое Портфолио
+# 🎮 Обо мне
 
 Привет! Я **Game Dev Enthusiast | Pixel Art Lover | Mechanics Explorer** 👋
 

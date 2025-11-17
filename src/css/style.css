@@ -23,6 +23,15 @@ body {
   transition: background-color var(--transition-speed) ease;
 }
 
+/* Темная тема */
+body.dark-theme {
+  --accent-color: #ff6b9d;
+  --bg-color: #1a1a1a;
+  --card-color: #2d2d2d;
+  --text-color: #ffffff;
+  --border-color: #ff6b9d;
+}
+
 .dashboard {
   min-height: 100vh;
   display: flex;
@@ -46,6 +55,25 @@ body {
   align-items: center;
   max-width: 800px;
   margin: 0 auto;
+}
+
+.theme-toggle {
+  background: var(--accent-color);
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+  font-size: 18px;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
 }
 
 .main-grid {
@@ -113,6 +141,8 @@ body {
   border: 3px solid var(--border-color);
   object-fit: cover;
   transition: all var(--transition-speed) ease;
+  image-rendering: pixelated;
+  /* Фикс пиксельности */
 }
 
 .avatar-container::after {
@@ -302,6 +332,8 @@ body {
   font-size: 32px;
   margin-bottom: 12px;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  image-rendering: pixelated;
+  /* Фикс пиксельности для иконок ачивок */
 }
 
 .achievement-name {
@@ -368,6 +400,8 @@ body {
   width: 24px;
   height: 24px;
   transition: transform var(--transition-speed) ease;
+  image-rendering: pixelated;
+  /* Фикс пиксельности для иконок соцсетей */
 }
 
 .social-link:hover .social-icon {

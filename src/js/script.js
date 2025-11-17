@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     initializeSite();
     loadConfig();
+    initializeThemeToggle();
 });
 
 function initializeSite() {
@@ -49,8 +50,9 @@ function applyUserSettings() {
     const avatar = document.getElementById('avatar');
     if (USER.avatar) {
         avatar.src = USER.avatar;
+        // Убрана запасная иконка при ошибке загрузки
         avatar.onerror = function () {
-            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiByeD0iNjAiIGZpbGw9IiNmZmQ2ZTciLz4KPHN2ZyB4PSIzMCIgeT0iMzAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM1YTNkNWMiIHN0cm9rZS13aWR0aD0iMiI+CjxwYXRoIGQ9Ik0yMCAyMXYtMmEyIDIgMCAwIDAtMi0yaC0yYTUgNSAwIDAgMC0xMC4wMTQgMEg0YTIgMiAwIDAgMC0yIDJ2MiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxjaXJjbGUgY3g9IjEyIiBjeT0iNyIgcj0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo8L3N2Zz4K';
+            this.style.display = 'none';
         }
     }
 }
@@ -120,5 +122,50 @@ function applySakuraSettings() {
         if (SAKURA.pixelOnHover) {
             document.body.classList.add('sakura-pixel-mode');
         }
+
+        // Инициализация сакуры после загрузки конфигурации
+        setTimeout(initializeSakura, 100);
     }
+}
+
+function initializeThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('.theme-icon');
+
+    // Проверяем сохраненную тему
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'dark') {
+        applyDarkTheme();
+        themeIcon.textContent = '☀️';
+    }
+
+    themeToggle.addEventListener('click', function () {
+        if (document.body.classList.contains('dark-theme')) {
+            applyLightTheme();
+            themeIcon.textContent = '🌙';
+            localStorage.setItem('portfolio-theme', 'light');
+        } else {
+            applyDarkTheme();
+            themeIcon.textContent = '☀️';
+            localStorage.setItem('portfolio-theme', 'dark');
+        }
+    });
+}
+
+function applyDarkTheme() {
+    document.body.classList.add('dark-theme');
+    document.documentElement.style.setProperty('--accent-color', '#ff6b9d');
+    document.documentElement.style.setProperty('--bg-color', '#1a1a1a');
+    document.documentElement.style.setProperty('--card-color', '#2d2d2d');
+    document.documentElement.style.setProperty('--text-color', '#ffffff');
+    document.documentElement.style.setProperty('--border-color', '#ff6b9d');
+}
+
+function applyLightTheme() {
+    document.body.classList.remove('dark-theme');
+    document.documentElement.style.setProperty('--accent-color', '#ff6b9d');
+    document.documentElement.style.setProperty('--bg-color', '#fffafc');
+    document.documentElement.style.setProperty('--card-color', '#ffffff');
+    document.documentElement.style.setProperty('--text-color', '#5a3d5c');
+    document.documentElement.style.setProperty('--border-color', '#ffd6e7');
 }

@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     initializeSite();
     loadConfig();
-    setupEventListeners();
 });
 
 function initializeSite() {
@@ -25,16 +24,6 @@ function applySiteSettings() {
 
 function applyAppearanceSettings() {
     const { APPEARANCE } = CONFIG;
-
-    const savedTheme = localStorage.getItem('portfolio-theme');
-    const theme = savedTheme || APPEARANCE.theme;
-
-    document.documentElement.setAttribute('data-theme', theme);
-
-    const themeSwitch = document.getElementById('themeSwitch');
-    if (themeSwitch) {
-        themeSwitch.checked = theme === 'github-dark';
-    }
 
     document.documentElement.style.setProperty('--accent-color', APPEARANCE.accentColor);
     document.documentElement.style.setProperty('--bg-color', APPEARANCE.backgroundColor);
@@ -133,31 +122,3 @@ function applySakuraSettings() {
         }
     }
 }
-
-function setupEventListeners() {
-    const themeSwitch = document.getElementById('themeSwitch');
-    if (themeSwitch) {
-        themeSwitch.addEventListener('change', toggleTheme);
-    }
-}
-
-function toggleTheme() {
-    const themeSwitch = document.getElementById('themeSwitch');
-    const newTheme = themeSwitch.checked ? 'github-dark' : 'sakura-light';
-
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('portfolio-theme', newTheme);
-
-    applyAppearanceSettings();
-}
-
-window.addEventListener('load', function () {
-    const savedTheme = localStorage.getItem('portfolio-theme');
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        const themeSwitch = document.getElementById('themeSwitch');
-        if (themeSwitch) {
-            themeSwitch.checked = savedTheme === 'github-dark';
-        }
-    }
-});

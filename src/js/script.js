@@ -129,25 +129,22 @@ function applySakuraSettings() {
 }
 
 function initializeThemeToggle() {
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle.querySelector('.theme-icon');
+    const themeCheckbox = document.getElementById('themeCheckbox');
 
     // Проверяем сохраненную тему
     const savedTheme = localStorage.getItem('portfolio-theme');
     if (savedTheme === 'dark') {
         applyDarkTheme();
-        themeIcon.textContent = '☀️';
+        themeCheckbox.checked = true;
     }
 
-    themeToggle.addEventListener('click', function () {
-        if (document.body.classList.contains('dark-theme')) {
-            applyLightTheme();
-            themeIcon.textContent = '🌙';
-            localStorage.setItem('portfolio-theme', 'light');
-        } else {
+    themeCheckbox.addEventListener('change', function () {
+        if (this.checked) {
             applyDarkTheme();
-            themeIcon.textContent = '☀️';
             localStorage.setItem('portfolio-theme', 'dark');
+        } else {
+            applyLightTheme();
+            localStorage.setItem('portfolio-theme', 'light');
         }
     });
 }
@@ -159,6 +156,7 @@ function applyDarkTheme() {
     document.documentElement.style.setProperty('--card-color', '#2d2d2d');
     document.documentElement.style.setProperty('--text-color', '#ffffff');
     document.documentElement.style.setProperty('--border-color', '#ff6b9d');
+    document.documentElement.style.setProperty('--progress-bg', '#3a3a3a'); // Новый цвет для прогресс-баров
 }
 
 function applyLightTheme() {
@@ -168,4 +166,5 @@ function applyLightTheme() {
     document.documentElement.style.setProperty('--card-color', '#ffffff');
     document.documentElement.style.setProperty('--text-color', '#5a3d5c');
     document.documentElement.style.setProperty('--border-color', '#ffd6e7');
+    document.documentElement.style.setProperty('--progress-bg', '#ffd6e7'); // Новый цвет для прогресс-баров
 }

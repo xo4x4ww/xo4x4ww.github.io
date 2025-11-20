@@ -50,7 +50,6 @@ function applyUserSettings() {
     const avatar = document.getElementById('avatar');
     if (USER.avatar) {
         avatar.src = USER.avatar;
-        // Убрана запасная иконка при ошибке загрузки
         avatar.onerror = function () {
             this.style.display = 'none';
         }
@@ -73,7 +72,7 @@ function applySocialSettings() {
         .filter(social => social.data && social.data.url)
         .map(social => `
             <a href="${social.data.url}" class="social-link" target="_blank" rel="noopener" title="${social.name}">
-                <img src="src/icons/${social.icon}" alt="${social.name}" class="social-icon">
+                <img src="src/icons/${social.icon}" alt="${social.name}" class="social-icon" onerror="this.style.display='none'">
             </a>
         `).join('');
 }
@@ -123,7 +122,6 @@ function applySakuraSettings() {
             document.body.classList.add('sakura-pixel-mode');
         }
 
-        // Инициализация сакуры после загрузки конфигурации
         setTimeout(initializeSakura, 100);
     }
 }
@@ -131,7 +129,6 @@ function applySakuraSettings() {
 function initializeThemeToggle() {
     const themeCheckbox = document.getElementById('themeCheckbox');
 
-    // Проверяем сохраненную тему
     const savedTheme = localStorage.getItem('portfolio-theme');
     if (savedTheme === 'dark') {
         applyDarkTheme();
@@ -156,7 +153,7 @@ function applyDarkTheme() {
     document.documentElement.style.setProperty('--card-color', '#2d2d2d');
     document.documentElement.style.setProperty('--text-color', '#ffffff');
     document.documentElement.style.setProperty('--border-color', '#ff6b9d');
-    document.documentElement.style.setProperty('--progress-bg', '#3a3a3a'); // Новый цвет для прогресс-баров
+    document.documentElement.style.setProperty('--progress-bg', '#3a3a3a');
 }
 
 function applyLightTheme() {
@@ -166,5 +163,5 @@ function applyLightTheme() {
     document.documentElement.style.setProperty('--card-color', '#ffffff');
     document.documentElement.style.setProperty('--text-color', '#5a3d5c');
     document.documentElement.style.setProperty('--border-color', '#ffd6e7');
-    document.documentElement.style.setProperty('--progress-bg', '#ffd6e7'); // Новый цвет для прогресс-баров
+    document.documentElement.style.setProperty('--progress-bg', '#ffd6e7');
 }

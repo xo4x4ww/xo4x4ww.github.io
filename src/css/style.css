@@ -3,6 +3,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 :root {
@@ -12,6 +16,7 @@
   --text-color: #5a3d5c;
   --border-color: #ffd6e7;
   --progress-bg: #ffd6e7;
+  --social-icon-color: #000000;
   --transition-speed: 0.3s;
 }
 
@@ -23,6 +28,7 @@ body.dark-theme {
   --text-color: #ffffff;
   --border-color: #ff6b9d;
   --progress-bg: #3a3a3a;
+  --social-icon-color: #ffffff;
 }
 
 body {
@@ -203,7 +209,6 @@ body {
   object-fit: cover;
   transition: all var(--transition-speed) ease;
   image-rendering: pixelated;
-  /* Фикс пиксельности */
 }
 
 .avatar-container::after {
@@ -297,11 +302,10 @@ body {
   width: 100%;
   height: 20px;
   background: var(--progress-bg);
-  /* Используем переменную для фона */
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
 }
 
 .progress-fill {
@@ -395,7 +399,6 @@ body {
   margin-bottom: 12px;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
   image-rendering: pixelated;
-  /* Фикс пиксельности для иконок ачивок */
 }
 
 .achievement-name {
@@ -463,7 +466,49 @@ body {
   height: 24px;
   transition: transform var(--transition-speed) ease;
   image-rendering: pixelated;
-  /* Фикс пиксельности для иконок соцсетей */
+}
+
+/* Черные иконки для GitHub и Itch.io */
+.social-link[title="GitHub"] .social-icon,
+.social-link[title="Itch.io"] .social-icon {
+  filter: brightness(0) invert(0);
+}
+
+/* Белые иконки для GitHub и Itch.io в темной теме */
+body.dark-theme .social-link[title="GitHub"] .social-icon,
+body.dark-theme .social-link[title="Itch.io"] .social-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* Pinterest - красная иконка */
+.social-link[title="Pinterest"] .social-icon {
+  filter: none;
+}
+
+.social-link[title="Pinterest"] .social-icon path {
+  fill: #e60023;
+}
+
+/* YouTube - красная иконка */
+.social-link[title="YouTube"] .social-icon {
+  filter: none;
+}
+
+.social-link[title="YouTube"] .social-icon path {
+  fill: #ff0000;
+}
+
+/* Telegram - синяя иконка */
+.social-link[title="Telegram"] .social-icon {
+  filter: none;
+}
+
+.social-link[title="Telegram"] .social-icon path:first-child {
+  fill: #0088cc;
+}
+
+.social-link[title="Telegram"] .social-icon path:last-child {
+  fill: white;
 }
 
 .social-link:hover .social-icon {
@@ -630,4 +675,30 @@ body {
 
 .progress-fill {
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Отключение выделения для текстовых элементов */
+.user-name,
+.user-title,
+.custom-status,
+.user-bio,
+.skill-name,
+.skill-percent,
+.skill-description,
+.achievement-name,
+.achievement-desc,
+.footer-bottom p,
+.footer-section h4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Специфичные стили для предотвращения выделения в карточках */
+.card * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

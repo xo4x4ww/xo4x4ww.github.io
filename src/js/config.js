@@ -127,23 +127,28 @@ const CONFIG = {
   },
   // Базовый URL для иконок из Gist
   ICONS_BASE_URL: "https://gist.githubusercontent.com/Semyon595/291b75b9faef598a2e697d29337388fb/raw/",
-  
-  // Только те соцсети, которыми пользуешься
+
+  // Соцсети (вернул YouTube)
   SOCIAL_NETWORKS: {
-    github: { 
-      url: "https://github.com/Semyon595", 
+    github: {
+      url: "https://github.com/Semyon595",
       username: "Semyon595",
       displayName: "GitHub"
     },
-    itchio: { 
-      url: "https://semyon-5.itch.io/", 
+    itchio: {
+      url: "https://semyon-5.itch.io/",
       username: "semyon-5",
       displayName: "Itch.io"
     },
-    telegram: { 
-      url: "https://t.me/Semyon_5", 
+    telegram: {
+      url: "https://t.me/Semyon_5",
       username: "Semyon_5",
       displayName: "Telegram"
+    },
+    youtube: {
+      url: "https://www.youtube.com/@Semyon_5",
+      username: "@Semyon_5",
+      displayName: "YouTube"
     }
   }
 };

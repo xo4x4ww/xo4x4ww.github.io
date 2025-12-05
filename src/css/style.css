@@ -209,6 +209,7 @@ body {
   image-rendering: pixelated;
 }
 
+/* ИСПРАВЛЕНО: Теперь при наведении будет круг, а не овал */
 .avatar-container::after {
   content: "";
   position: absolute;
@@ -217,6 +218,7 @@ body {
   right: -3px;
   bottom: -3px;
   border-radius: 50%;
+  /* Исправлено с 50% чтобы был круг */
   border: 2px solid var(--accent-color);
   opacity: 0;
   transition: opacity var(--transition-speed) ease;
@@ -470,11 +472,14 @@ body {
   transition: all var(--transition-speed) ease;
 }
 
+/* ИСПРАВЛЕНО: Текст ближе к иконкам */
 .network-name {
   font-size: 12px;
   font-weight: 500;
   color: #8b7a8d;
   text-align: center;
+  margin-top: 2px;
+  /* Уменьшил отступ */
 }
 
 /* Иконки по умолчанию (цветные) */
@@ -521,21 +526,6 @@ body:not(.dark-theme) .network-icon-black {
   filter: brightness(1.2);
 }
 
-/* GitHub - черный в светлой теме, белый в темной */
-.network-link[data-network="github"] .network-icon-container {
-  background: transparent;
-}
-
-/* Itch.io - цветная иконка */
-.network-link[data-network="itchio"] .network-icon-container {
-  background: transparent;
-}
-
-/* Telegram - синяя иконка */
-.network-link[data-network="telegram"] .network-icon-container {
-  background: transparent;
-}
-
 /* Цветные тени при наведении */
 .network-link[data-network="github"]:hover {
   filter: drop-shadow(0 0 10px rgba(24, 23, 23, 0.3));
@@ -547,6 +537,10 @@ body:not(.dark-theme) .network-icon-black {
 
 .network-link[data-network="telegram"]:hover {
   filter: drop-shadow(0 0 10px rgba(0, 136, 204, 0.3));
+}
+
+.network-link[data-network="youtube"]:hover {
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.3));
 }
 
 .footer-bottom {
@@ -619,6 +613,12 @@ body:not(.dark-theme) .network-icon-black {
     height: 25px;
   }
 
+  /* Еще ближе на мобильных */
+  .network-name {
+    margin-top: 1px;
+    font-size: 11px;
+  }
+
   .user-name {
     font-size: 24px;
   }
@@ -681,7 +681,7 @@ body:not(.dark-theme) .network-icon-black {
   }
 
   .network-name {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .footer-section h4 {

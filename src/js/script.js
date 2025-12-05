@@ -78,6 +78,12 @@ function applySocialNetworksSettings() {
             name: SOCIAL_NETWORKS.telegram.displayName,
             url: SOCIAL_NETWORKS.telegram.url,
             iconName: "Telegram"
+        },
+        {
+            key: "youtube",
+            name: SOCIAL_NETWORKS.youtube.displayName,
+            url: SOCIAL_NETWORKS.youtube.url,
+            iconName: "YouTube"
         }
     ];
 
@@ -158,8 +164,8 @@ function applySakuraSettings() {
             document.body.classList.add('sakura-pixel-mode');
         }
 
-        // Инициализируем сакуру с небольшой задержкой
-        setTimeout(initializeSakura, 100);
+        // Инициализируем сакуру немедленно
+        initializeSakura();
     }
 }
 

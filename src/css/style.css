@@ -425,11 +425,16 @@ body {
   margin: 0 auto;
 }
 
+.footer-section {
+  margin-bottom: 30px;
+}
+
 .footer-section h4 {
   color: var(--accent-color);
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .social-links {
@@ -515,6 +520,112 @@ body.dark-theme .social-link[title="Itch.io"] .social-icon {
   transform: scale(1.2);
 }
 
+/* Стили для новых социальных сетей в футере */
+.social-networks {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.network-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: all var(--transition-speed) ease;
+  width: 80px;
+}
+
+.network-icon-container {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-color);
+  border: 2px solid var(--border-color);
+  transition: all var(--transition-speed) ease;
+  margin-bottom: 8px;
+}
+
+.network-icon {
+  width: 30px;
+  height: 30px;
+  transition: all var(--transition-speed) ease;
+}
+
+.network-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #8b7a8d;
+  text-align: center;
+}
+
+/* Цвета для разных соцсетей при наведении */
+.network-link:hover .network-icon-container {
+  transform: translateY(-5px) scale(1.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 25px rgba(255, 107, 157, 0.2);
+}
+
+.network-link:hover .network-icon {
+  transform: scale(1.1);
+}
+
+/* Цвета фона при наведении для разных соцсетей */
+.network-link[data-network="telegram"]:hover .network-icon-container {
+  background: #0088cc;
+}
+
+.network-link[data-network="vk"]:hover .network-icon-container {
+  background: #0077ff;
+}
+
+.network-link[data-network="whatsapp"]:hover .network-icon-container {
+  background: #25D366;
+}
+
+.network-link[data-network="youtube"]:hover .network-icon-container {
+  background: #FF0000;
+}
+
+.network-link[data-network="instagram"]:hover .network-icon-container {
+  background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+}
+
+/* Иконки по умолчанию (цветные) */
+.network-icon-color {
+  display: block;
+}
+
+.network-icon-white,
+.network-icon-black {
+  display: none;
+}
+
+/* В темной теме показываем белые иконки */
+body.dark-theme .network-icon-color,
+body.dark-theme .network-icon-black {
+  display: none;
+}
+
+body.dark-theme .network-icon-white {
+  display: block;
+}
+
+/* В светлой теме показываем черные иконки */
+body:not(.dark-theme) .network-icon-color,
+body:not(.dark-theme) .network-icon-white {
+  display: none;
+}
+
+body:not(.dark-theme) .network-icon-black {
+  display: block;
+}
+
 .footer-bottom {
   max-width: 800px;
   margin: 24px auto 0;
@@ -576,6 +687,25 @@ body.dark-theme .social-link[title="Itch.io"] .social-icon {
     padding: 12px;
   }
 
+  /* Адаптив для новых соцсетей */
+  .social-networks {
+    gap: 15px;
+  }
+
+  .network-link {
+    width: 70px;
+  }
+
+  .network-icon-container {
+    width: 55px;
+    height: 55px;
+  }
+
+  .network-icon {
+    width: 26px;
+    height: 26px;
+  }
+
   .user-name {
     font-size: 24px;
   }
@@ -621,6 +751,33 @@ body.dark-theme .social-link[title="Itch.io"] .social-icon {
   .social-links {
     justify-content: center;
   }
+
+  /* Адаптив для мобильных */
+  .social-networks {
+    gap: 10px;
+  }
+
+  .network-link {
+    width: 65px;
+  }
+
+  .network-icon-container {
+    width: 50px;
+    height: 50px;
+  }
+
+  .network-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .network-name {
+    font-size: 11px;
+  }
+
+  .footer-section h4 {
+    font-size: 16px;
+  }
 }
 
 .user-bio-container {
@@ -649,7 +806,8 @@ body.dark-theme .social-link[title="Itch.io"] .social-icon {
   }
 }
 
-.social-link:focus {
+.social-link:focus,
+.network-link:focus {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
 }
@@ -688,7 +846,8 @@ body.dark-theme .social-link[title="Itch.io"] .social-icon {
 .achievement-name,
 .achievement-desc,
 .footer-bottom p,
-.footer-section h4 {
+.footer-section h4,
+.network-name {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

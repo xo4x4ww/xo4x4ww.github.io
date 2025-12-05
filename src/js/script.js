@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeSite();
     loadConfig();
     initializeThemeToggle();
+    updateSocialNetworksTheme();
 });
 
 function initializeSite() {
@@ -17,6 +18,7 @@ function loadConfig() {
     applySkillsSettings();
     applyAchievementsSettings();
     applySakuraSettings();
+    applySocialNetworksSettings(); // Новая функция
 }
 
 function applySiteSettings() {
@@ -75,6 +77,74 @@ function applySocialSettings() {
                 <img src="src/icons/${social.icon}" alt="${social.name}" class="social-icon" onerror="this.style.display='none'">
             </a>
         `).join('');
+}
+
+function applySocialNetworksSettings() {
+    const { SOCIAL_NETWORKS, ICONS_BASE_URL } = CONFIG;
+    const socialNetworks = document.getElementById('socialNetworks');
+
+    const networks = [
+        {
+            name: 'Telegram',
+            data: SOCIAL_NETWORKS.telegram,
+            key: 'telegram'
+        },
+        {
+            name: 'VK',
+            data: SOCIAL_NETWORKS.vk,
+            key: 'vk'
+        },
+        {
+            name: 'WhatsApp',
+            data: SOCIAL_NETWORKS.whatsapp,
+            key: 'whatsapp'
+        },
+        {
+            name: 'YouTube',
+            data: SOCIAL_NETWORKS.youtube,
+            key: 'youtube'
+        },
+        {
+            name: 'Instagram',
+            data: SOCIAL_NETWORKS.instagram,
+            key: 'instagram'
+        }
+    ];
+
+    socialNetworks.innerHTML = networks
+        .filter(network => network.data && network.data.url)
+        .map(network => `
+            <a href="${network.data.url}" 
+               class="network-link" 
+               target="_blank" 
+               rel="noopener" 
+               data-network="${network.key}"
+               aria-label="${network.name}">
+                <div class="network-icon-container">
+                    <img src="${ICONS_BASE_URL}${network.name}.svg" 
+                         alt="${network.name}" 
+                         class="network-icon network-icon-color"
+                         onerror="this.style.display='none'">
+                    <img src="${ICONS_BASE_URL}${network.name}_white.svg" 
+                         alt="${network.name}" 
+                         class="network-icon network-icon-white"
+                         onerror="this.style.display='none'">
+                    <img src="${ICONS_BASE_URL}${network.name}_black.svg" 
+                         alt="${network.name}" 
+                         class="network-icon network-icon-black"
+                         onerror="this.style.display='none'">
+                </div>
+                <span class="network-name">${network.name}</span>
+            </a>
+        `).join('');
+
+    // После загрузки обновляем тему иконок
+    updateSocialNetworksTheme();
+}
+
+function updateSocialNetworksTheme() {
+    // Эта функция будет вызываться при смене темы
+    // Автоматически работает через CSS классы
 }
 
 function applySkillsSettings() {
@@ -143,6 +213,8 @@ function initializeThemeToggle() {
             applyLightTheme();
             localStorage.setItem('portfolio-theme', 'light');
         }
+        // После смены темы обновляем отображение иконок
+        updateSocialNetworksTheme();
     });
 }
 

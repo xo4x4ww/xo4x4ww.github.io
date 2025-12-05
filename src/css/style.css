@@ -16,7 +16,6 @@
   --text-color: #5a3d5c;
   --border-color: #ffd6e7;
   --progress-bg: #ffd6e7;
-  --social-icon-color: #000000;
   --transition-speed: 0.3s;
 }
 
@@ -28,7 +27,6 @@ body.dark-theme {
   --text-color: #ffffff;
   --border-color: #ff6b9d;
   --progress-bg: #3a3a3a;
-  --social-icon-color: #ffffff;
 }
 
 body {
@@ -437,94 +435,11 @@ body {
   text-align: center;
 }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px;
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  text-decoration: none;
-  color: var(--text-color);
-  transition: all var(--transition-speed) ease;
-  background: var(--bg-color);
-  width: 50px;
-  height: 50px;
-}
-
-.social-link:hover {
-  border-color: var(--accent-color);
-  transform: translateY(-2px) scale(1.1);
-  box-shadow: 0 6px 20px rgba(255, 107, 157, 0.15);
-  background: var(--card-color);
-}
-
-.social-icon {
-  width: 24px;
-  height: 24px;
-  transition: transform var(--transition-speed) ease;
-  image-rendering: pixelated;
-}
-
-/* Черные иконки для GitHub и Itch.io */
-.social-link[title="GitHub"] .social-icon,
-.social-link[title="Itch.io"] .social-icon {
-  filter: brightness(0) invert(0);
-}
-
-/* Белые иконки для GitHub и Itch.io в темной теме */
-body.dark-theme .social-link[title="GitHub"] .social-icon,
-body.dark-theme .social-link[title="Itch.io"] .social-icon {
-  filter: brightness(0) invert(1);
-}
-
-/* Pinterest - красная иконка */
-.social-link[title="Pinterest"] .social-icon {
-  filter: none;
-}
-
-.social-link[title="Pinterest"] .social-icon path {
-  fill: #e60023;
-}
-
-/* YouTube - красная иконка */
-.social-link[title="YouTube"] .social-icon {
-  filter: none;
-}
-
-.social-link[title="YouTube"] .social-icon path {
-  fill: #ff0000;
-}
-
-/* Telegram - синяя иконка */
-.social-link[title="Telegram"] .social-icon {
-  filter: none;
-}
-
-.social-link[title="Telegram"] .social-icon path:first-child {
-  fill: #0088cc;
-}
-
-.social-link[title="Telegram"] .social-icon path:last-child {
-  fill: white;
-}
-
-.social-link:hover .social-icon {
-  transform: scale(1.2);
-}
-
-/* Стили для новых социальных сетей в футере */
+/* Стили для социальных сетей */
 .social-networks {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
   flex-wrap: wrap;
 }
 
@@ -545,8 +460,6 @@ body.dark-theme .social-link[title="Itch.io"] .social-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-color);
-  border: 2px solid var(--border-color);
   transition: all var(--transition-speed) ease;
   margin-bottom: 8px;
 }
@@ -562,38 +475,6 @@ body.dark-theme .social-link[title="Itch.io"] .social-icon {
   font-weight: 500;
   color: #8b7a8d;
   text-align: center;
-}
-
-/* Цвета для разных соцсетей при наведении */
-.network-link:hover .network-icon-container {
-  transform: translateY(-5px) scale(1.1);
-  border-color: var(--accent-color);
-  box-shadow: 0 8px 25px rgba(255, 107, 157, 0.2);
-}
-
-.network-link:hover .network-icon {
-  transform: scale(1.1);
-}
-
-/* Цвета фона при наведении для разных соцсетей */
-.network-link[data-network="telegram"]:hover .network-icon-container {
-  background: #0088cc;
-}
-
-.network-link[data-network="vk"]:hover .network-icon-container {
-  background: #0077ff;
-}
-
-.network-link[data-network="whatsapp"]:hover .network-icon-container {
-  background: #25D366;
-}
-
-.network-link[data-network="youtube"]:hover .network-icon-container {
-  background: #FF0000;
-}
-
-.network-link[data-network="instagram"]:hover .network-icon-container {
-  background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
 }
 
 /* Иконки по умолчанию (цветные) */
@@ -624,6 +505,48 @@ body:not(.dark-theme) .network-icon-white {
 
 body:not(.dark-theme) .network-icon-black {
   display: block;
+}
+
+/* Убрали бортики, остались только плавные анимации */
+.network-link:hover .network-icon-container {
+  transform: translateY(-5px) scale(1.1);
+}
+
+.network-link:hover .network-icon {
+  transform: scale(1.1);
+}
+
+/* Плавные эффекты при наведении для разных соцсетей */
+.network-link:hover {
+  filter: brightness(1.2);
+}
+
+/* GitHub - черный в светлой теме, белый в темной */
+.network-link[data-network="github"] .network-icon-container {
+  background: transparent;
+}
+
+/* Itch.io - цветная иконка */
+.network-link[data-network="itchio"] .network-icon-container {
+  background: transparent;
+}
+
+/* Telegram - синяя иконка */
+.network-link[data-network="telegram"] .network-icon-container {
+  background: transparent;
+}
+
+/* Цветные тени при наведении */
+.network-link[data-network="github"]:hover {
+  filter: drop-shadow(0 0 10px rgba(24, 23, 23, 0.3));
+}
+
+.network-link[data-network="itchio"]:hover {
+  filter: drop-shadow(0 0 10px rgba(250, 92, 92, 0.3));
+}
+
+.network-link[data-network="telegram"]:hover {
+  filter: drop-shadow(0 0 10px rgba(0, 136, 204, 0.3));
 }
 
 .footer-bottom {
@@ -677,19 +600,9 @@ body:not(.dark-theme) .network-icon-black {
     padding: 24px 16px 16px;
   }
 
-  .social-links {
-    gap: 12px;
-  }
-
-  .social-link {
-    width: 44px;
-    height: 44px;
-    padding: 12px;
-  }
-
-  /* Адаптив для новых соцсетей */
+  /* Адаптив для соцсетей */
   .social-networks {
-    gap: 15px;
+    gap: 20px;
   }
 
   .network-link {
@@ -697,13 +610,13 @@ body:not(.dark-theme) .network-icon-black {
   }
 
   .network-icon-container {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
   }
 
   .network-icon {
-    width: 26px;
-    height: 26px;
+    width: 25px;
+    height: 25px;
   }
 
   .user-name {
@@ -748,27 +661,23 @@ body:not(.dark-theme) .network-icon-black {
     grid-template-columns: 1fr;
   }
 
-  .social-links {
-    justify-content: center;
-  }
-
   /* Адаптив для мобильных */
   .social-networks {
-    gap: 10px;
+    gap: 15px;
   }
 
   .network-link {
-    width: 65px;
+    width: 60px;
   }
 
   .network-icon-container {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
   }
 
   .network-icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
 
   .network-name {
@@ -806,7 +715,6 @@ body:not(.dark-theme) .network-icon-black {
   }
 }
 
-.social-link:focus,
 .network-link:focus {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
@@ -819,7 +727,7 @@ body:not(.dark-theme) .network-icon-black {
   }
 
   .card {
-    padding: 30px; 
+    padding: 30px;
   }
 }
 

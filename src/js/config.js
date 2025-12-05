@@ -125,21 +125,25 @@ const CONFIG = {
     ],
     showLocked: true,
   },
-  SOCIAL: {
-    github: { url: "https://github.com/Semyon595", username: "Semyon595" },
-    pinterest: { url: "https://ru.pinterest.com/semyon_5/", username: "semyon_5" },
-    youtube: { url: "https://www.youtube.com/@Semyon_5", username: "@Semyon_5" },
-    itchio: { url: "https://semyon-5.itch.io/", username: "semyon-5" },
-    telegram: { url: "https://t.me/Semyon_5", username: "Semyon_5" }
-  },
-  // Новые социальные сети для футера
+  // Базовый URL для иконок из Gist
+  ICONS_BASE_URL: "https://gist.githubusercontent.com/Semyon595/291b75b9faef598a2e697d29337388fb/raw/",
+  
+  // Только те соцсети, которыми пользуешься
   SOCIAL_NETWORKS: {
-    telegram: { url: "https://t.me/Semyon_5", username: "Semyon_5" },
-    vk: { url: "https://vk.com/semyon_5", username: "semyon_5" },
-    whatsapp: { url: "https://wa.me/79123456789", username: "+7 (912) 345-67-89" },
-    youtube: { url: "https://youtube.com/@Semyon_5", username: "@Semyon_5" },
-    instagram: { url: "https://instagram.com/semyon_5", username: "semyon_5" }
-  },
-  // Базовый URL для иконок
-  ICONS_BASE_URL: "https://gist.githubusercontent.com/Semyon595/291b75b9faef598a2e697d29337388fb/raw/"
+    github: { 
+      url: "https://github.com/Semyon595", 
+      username: "Semyon595",
+      displayName: "GitHub"
+    },
+    itchio: { 
+      url: "https://semyon-5.itch.io/", 
+      username: "semyon-5",
+      displayName: "Itch.io"
+    },
+    telegram: { 
+      url: "https://t.me/Semyon_5", 
+      username: "Semyon_5",
+      displayName: "Telegram"
+    }
+  }
 };

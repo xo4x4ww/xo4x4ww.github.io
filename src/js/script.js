@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeSite();
     loadConfig();
     initializeThemeToggle();
-    updateSocialNetworksTheme();
 });
 
 function initializeSite() {
@@ -14,11 +13,10 @@ function loadConfig() {
     applySiteSettings();
     applyAppearanceSettings();
     applyUserSettings();
-    applySocialSettings();
     applySkillsSettings();
     applyAchievementsSettings();
     applySakuraSettings();
-    applySocialNetworksSettings(); // Новая функция
+    applySocialNetworksSettings();
 }
 
 function applySiteSettings() {
@@ -58,93 +56,61 @@ function applyUserSettings() {
     }
 }
 
-function applySocialSettings() {
-    const { SOCIAL } = CONFIG;
-    const socialLinks = document.getElementById('socialLinks');
-
-    const socials = [
-        { name: 'GitHub', data: SOCIAL.github, icon: 'Github.svg' },
-        { name: 'Pinterest', data: SOCIAL.pinterest, icon: 'Pinterest.svg' },
-        { name: 'YouTube', data: SOCIAL.youtube, icon: 'YouTube.svg' },
-        { name: 'Itch.io', data: SOCIAL.itchio, icon: 'Itch-io.svg' },
-        { name: 'Telegram', data: SOCIAL.telegram, icon: 'Telegram.svg' }
-    ];
-
-    socialLinks.innerHTML = socials
-        .filter(social => social.data && social.data.url)
-        .map(social => `
-            <a href="${social.data.url}" class="social-link" target="_blank" rel="noopener" title="${social.name}">
-                <img src="src/icons/${social.icon}" alt="${social.name}" class="social-icon" onerror="this.style.display='none'">
-            </a>
-        `).join('');
-}
-
 function applySocialNetworksSettings() {
     const { SOCIAL_NETWORKS, ICONS_BASE_URL } = CONFIG;
     const socialNetworks = document.getElementById('socialNetworks');
 
     const networks = [
         {
-            name: 'Telegram',
-            data: SOCIAL_NETWORKS.telegram,
-            key: 'telegram'
+            key: "github",
+            name: SOCIAL_NETWORKS.github.displayName,
+            url: SOCIAL_NETWORKS.github.url,
+            iconName: "GitHub"
         },
         {
-            name: 'VK',
-            data: SOCIAL_NETWORKS.vk,
-            key: 'vk'
+            key: "itchio",
+            name: SOCIAL_NETWORKS.itchio.displayName,
+            url: SOCIAL_NETWORKS.itchio.url,
+            iconName: "Itch"
         },
         {
-            name: 'WhatsApp',
-            data: SOCIAL_NETWORKS.whatsapp,
-            key: 'whatsapp'
-        },
-        {
-            name: 'YouTube',
-            data: SOCIAL_NETWORKS.youtube,
-            key: 'youtube'
-        },
-        {
-            name: 'Instagram',
-            data: SOCIAL_NETWORKS.instagram,
-            key: 'instagram'
+            key: "telegram",
+            name: SOCIAL_NETWORKS.telegram.displayName,
+            url: SOCIAL_NETWORKS.telegram.url,
+            iconName: "Telegram"
         }
     ];
 
     socialNetworks.innerHTML = networks
-        .filter(network => network.data && network.data.url)
         .map(network => `
-            <a href="${network.data.url}" 
+            <a href="${network.url}" 
                class="network-link" 
                target="_blank" 
-               rel="noopener" 
+               rel="noopener noreferrer" 
                data-network="${network.key}"
                aria-label="${network.name}">
                 <div class="network-icon-container">
-                    <img src="${ICONS_BASE_URL}${network.name}.svg" 
+                    <img src="${ICONS_BASE_URL}${network.iconName}.svg" 
                          alt="${network.name}" 
                          class="network-icon network-icon-color"
-                         onerror="this.style.display='none'">
-                    <img src="${ICONS_BASE_URL}${network.name}_white.svg" 
+                         onerror="handleIconError(this)">
+                    <img src="${ICONS_BASE_URL}${network.iconName}_white.svg" 
                          alt="${network.name}" 
                          class="network-icon network-icon-white"
-                         onerror="this.style.display='none'">
-                    <img src="${ICONS_BASE_URL}${network.name}_black.svg" 
+                         onerror="handleIconError(this)">
+                    <img src="${ICONS_BASE_URL}${network.iconName}_black.svg" 
                          alt="${network.name}" 
                          class="network-icon network-icon-black"
-                         onerror="this.style.display='none'">
+                         onerror="handleIconError(this)">
                 </div>
                 <span class="network-name">${network.name}</span>
             </a>
         `).join('');
-
-    // После загрузки обновляем тему иконок
-    updateSocialNetworksTheme();
 }
 
-function updateSocialNetworksTheme() {
-    // Эта функция будет вызываться при смене темы
-    // Автоматически работает через CSS классы
+function handleIconError(img) {
+    console.warn(`Не удалось загрузить иконку: ${img.src}`);
+    img.style.display = 'none';
 }
 
 function applySkillsSettings() {
@@ -192,6 +158,7 @@ function applySakuraSettings() {
             document.body.classList.add('sakura-pixel-mode');
         }
 
+        // Инициализируем сакуру с небольшой задержкой
         setTimeout(initializeSakura, 100);
     }
 }
@@ -213,8 +180,6 @@ function initializeThemeToggle() {
             applyLightTheme();
             localStorage.setItem('portfolio-theme', 'light');
         }
-        // После смены темы обновляем отображение иконок
-        updateSocialNetworksTheme();
     });
 }
 

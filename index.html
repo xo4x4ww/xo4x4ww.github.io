@@ -124,16 +124,13 @@
 
     <script>
         // Проверка и инициализация сакуры
-        window.addEventListener('load', function () {
-            if (window.CONFIG && window.CONFIG.SAKURA && window.CONFIG.SAKURA.enabled) {
-                setTimeout(function () {
-                    if (typeof initializeSakura === 'function') {
-                        initializeSakura();
-                        console.log('🌸 Сакура инициализирована');
-                    }
-                }, 1000);
-            }
-        });
+        if (window.CONFIG && window.CONFIG.SAKURA && window.CONFIG.SAKURA.enabled) {
+            setTimeout(function () {
+                if (typeof initializeSakura === 'function') {
+                    initializeSakura();
+                }
+            }, 1500);
+        }
     </script>
 </body>
 

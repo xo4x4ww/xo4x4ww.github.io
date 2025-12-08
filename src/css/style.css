@@ -543,6 +543,57 @@ body:not(.dark-theme) .network-icon-black {
   filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.3));
 }
 
+/* Разноцветные иконки при наведении */
+.network-link:hover .network-icon-color {
+  display: block !important;
+  filter: none !important;
+}
+
+.network-link:hover .network-icon-white,
+.network-link:hover .network-icon-black {
+  display: none !important;
+}
+
+/* GitHub - черный/белый становится цветным при наведении */
+.network-link[data-network="github"]:hover .network-icon {
+  filter: none !important;
+}
+
+.network-link[data-network="github"]:hover .network-icon-black path,
+.network-link[data-network="github"]:hover .network-icon-white path {
+  fill: #181717 !important;
+}
+
+/* Itch.io - черный/белый становится красным при наведении */
+.network-link[data-network="itchio"]:hover .network-icon {
+  filter: none !important;
+}
+
+.network-link[data-network="itchio"]:hover .network-icon-black path,
+.network-link[data-network="itchio"]:hover .network-icon-white path {
+  fill: #FA5C5C !important;
+}
+
+/* Telegram - черный/белый становится синим при наведении */
+.network-link[data-network="telegram"]:hover .network-icon {
+  filter: none !important;
+}
+
+.network-link[data-network="telegram"]:hover .network-icon-black path,
+.network-link[data-network="telegram"]:hover .network-icon-white path {
+  fill: #0088cc !important;
+}
+
+/* YouTube - черный/белый становится красным при наведении */
+.network-link[data-network="youtube"]:hover .network-icon {
+  filter: none !important;
+}
+
+.network-link[data-network="youtube"]:hover .network-icon-black path,
+.network-link[data-network="youtube"]:hover .network-icon-white path {
+  fill: #FF0000 !important;
+}
+
 .footer-bottom {
   max-width: 800px;
   margin: 24px auto 0;

@@ -164,8 +164,18 @@ function applySakuraSettings() {
             document.body.classList.add('sakura-pixel-mode');
         }
 
-        // Инициализируем сакуру немедленно
-        initializeSakura();
+        // Ждем немного чтобы DOM полностью загрузился
+        setTimeout(() => {
+            if (typeof initializeSakura === 'function') {
+                initializeSakura();
+            } else {
+                console.warn('Функция initializeSakura не найдена');
+                // Альтернативная инициализация
+                if (window.sakuraSystem && typeof window.sakuraSystem.initialize === 'function') {
+                    window.sakuraSystem.initialize();
+                }
+            }
+        }, 1000); // Увеличил задержку
     }
 }
 

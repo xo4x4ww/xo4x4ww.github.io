@@ -29,13 +29,44 @@ body.dark-theme {
   --progress-bg: #3a3a3a;
 }
 
+/* Основной шрифт Calibri */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Calibri", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.5;
   min-height: 100vh;
   transition: background-color var(--transition-speed) ease;
+}
+
+/* Принудительное применение Calibri ко всем текстовым элементам */
+.dashboard,
+.header,
+.main-grid,
+.card,
+.profile-card,
+.avatar-container,
+.user-name,
+.user-title,
+.custom-status,
+.user-bio-container,
+.user-bio,
+.skills-card h3,
+.skill-item,
+.skill-header,
+.skill-name,
+.skill-percent,
+.skill-description,
+.achievements-card h3,
+.achievement,
+.achievement-name,
+.achievement-desc,
+.footer,
+.footer-section h4,
+.footer-bottom p,
+.network-link,
+.network-name {
+  font-family: "Calibri", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
 .dashboard {
@@ -218,7 +249,6 @@ body {
   right: -3px;
   bottom: -3px;
   border-radius: 50%;
-  /* Исправлено с 50% чтобы был круг */
   border: 2px solid var(--accent-color);
   opacity: 0;
   transition: opacity var(--transition-speed) ease;
@@ -479,7 +509,6 @@ body {
   color: #8b7a8d;
   text-align: center;
   margin-top: 2px;
-  /* Уменьшил отступ */
 }
 
 /* Иконки по умолчанию (цветные) */
@@ -531,16 +560,20 @@ body:not(.dark-theme) .network-icon-black {
   filter: drop-shadow(0 0 10px rgba(24, 23, 23, 0.3));
 }
 
-.network-link[data-network="itchio"]:hover {
-  filter: drop-shadow(0 0 10px rgba(250, 92, 92, 0.3));
-}
-
 .network-link[data-network="telegram"]:hover {
   filter: drop-shadow(0 0 10px rgba(0, 136, 204, 0.3));
 }
 
+.network-link[data-network="pinterest"]:hover {
+  filter: drop-shadow(0 0 10px rgba(230, 0, 35, 0.3));
+}
+
 .network-link[data-network="youtube"]:hover {
   filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.3));
+}
+
+.network-link[data-network="itchio"]:hover {
+  filter: drop-shadow(0 0 10px rgba(250, 92, 92, 0.3));
 }
 
 /* Разноцветные иконки при наведении */
@@ -564,16 +597,6 @@ body:not(.dark-theme) .network-icon-black {
   fill: #181717 !important;
 }
 
-/* Itch.io - черный/белый становится красным при наведении */
-.network-link[data-network="itchio"]:hover .network-icon {
-  filter: none !important;
-}
-
-.network-link[data-network="itchio"]:hover .network-icon-black path,
-.network-link[data-network="itchio"]:hover .network-icon-white path {
-  fill: #FA5C5C !important;
-}
-
 /* Telegram - черный/белый становится синим при наведении */
 .network-link[data-network="telegram"]:hover .network-icon {
   filter: none !important;
@@ -584,6 +607,16 @@ body:not(.dark-theme) .network-icon-black {
   fill: #0088cc !important;
 }
 
+/* Pinterest - черный/белый становится красным при наведении */
+.network-link[data-network="pinterest"]:hover .network-icon {
+  filter: none !important;
+}
+
+.network-link[data-network="pinterest"]:hover .network-icon-black path,
+.network-link[data-network="pinterest"]:hover .network-icon-white path {
+  fill: #e60023 !important;
+}
+
 /* YouTube - черный/белый становится красным при наведении */
 .network-link[data-network="youtube"]:hover .network-icon {
   filter: none !important;
@@ -592,6 +625,16 @@ body:not(.dark-theme) .network-icon-black {
 .network-link[data-network="youtube"]:hover .network-icon-black path,
 .network-link[data-network="youtube"]:hover .network-icon-white path {
   fill: #FF0000 !important;
+}
+
+/* Itch.io - черный/белый становится красным при наведении */
+.network-link[data-network="itchio"]:hover .network-icon {
+  filter: none !important;
+}
+
+.network-link[data-network="itchio"]:hover .network-icon-black path,
+.network-link[data-network="itchio"]:hover .network-icon-white path {
+  fill: #FA5C5C !important;
 }
 
 .footer-bottom {

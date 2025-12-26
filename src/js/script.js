@@ -61,29 +61,35 @@ function applySocialNetworksSettings() {
     const socialNetworks = document.getElementById('socialNetworks');
 
     const networks = [
-        {
-            key: "github",
+        { 
+            key: "github", 
             name: SOCIAL_NETWORKS.github.displayName,
             url: SOCIAL_NETWORKS.github.url,
             iconName: "GitHub"
         },
-        {
-            key: "itchio",
-            name: SOCIAL_NETWORKS.itchio.displayName,
-            url: SOCIAL_NETWORKS.itchio.url,
-            iconName: "Itch"
-        },
-        {
-            key: "telegram",
+        { 
+            key: "telegram", 
             name: SOCIAL_NETWORKS.telegram.displayName,
             url: SOCIAL_NETWORKS.telegram.url,
             iconName: "Telegram"
         },
-        {
-            key: "youtube",
+        { 
+            key: "pinterest", 
+            name: SOCIAL_NETWORKS.pinterest.displayName,
+            url: SOCIAL_NETWORKS.pinterest.url,
+            iconName: "Pinterest"
+        },
+        { 
+            key: "youtube", 
             name: SOCIAL_NETWORKS.youtube.displayName,
             url: SOCIAL_NETWORKS.youtube.url,
             iconName: "YouTube"
+        },
+        { 
+            key: "itchio", 
+            name: SOCIAL_NETWORKS.itchio.displayName,
+            url: SOCIAL_NETWORKS.itchio.url,
+            iconName: "Itch"
         }
     ];
 
@@ -146,7 +152,7 @@ function applyAchievementsSettings() {
         ACHIEVEMENTS.items.filter(ach => ach.unlocked);
 
     achievementsGrid.innerHTML = achievementsToShow.map(achievement => `
-        <div class="achievement ${achievement.unlocked ? 'unlocked' : 'locked'}">
+        <div class="achievement unlocked">
             <div class="achievement-icon">${achievement.icon}</div>
             <div class="achievement-name">${achievement.name}</div>
             <div class="achievement-desc">${achievement.description}</div>
@@ -175,7 +181,7 @@ function applySakuraSettings() {
                     window.sakuraSystem.initialize();
                 }
             }
-        }, 1000); // Увеличил задержку
+        }, 800);
     }
 }
 

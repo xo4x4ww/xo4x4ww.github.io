@@ -8,13 +8,6 @@ const CONFIG = {
     title: "Дизайнер/Веб разраотчик",
     customStatus: "👋 Погружен в разработку с головой – тот самый разраб!",
     avatar: "src/images/avatar.png",
-    bio: `👋 Привет! Я Семён 😀, 12-летний дизайнер и программист. Погружен в разработку с головой – тот самый разраб! 😎
-
-💻 На чем я кодю:
-• HTML & CSS (Веб разработка сайтов)
-• Scratch (Разработка игр и приложений)
-
-⏰ Всегда на связи! (GMT +10 🏞)`,
   },
   APPEARANCE: {
     theme: "sakura-light",
@@ -48,13 +41,6 @@ const CONFIG = {
         color: "#ff6b9d",
         style: "pixel",
         description: "Создание веб-страниц"
-      },
-      {
-        name: "Scratch",
-        level: 95,
-        color: "#d46fd4",
-        style: "pixel",
-        description: "Разработка игр и приложений"
       },
       {
         name: "Game Design",
@@ -108,33 +94,33 @@ const CONFIG = {
     showLocked: true,
   },
   // Базовый URL для иконок из Gist
-  ICONS_BASE_URL: "https://gist.githubusercontent.com/Semyon595/291b75b9faef598a2e697d29337388fb/raw/",
-  
+  ICONS_BASE_URL: "https://gist.githubusercontent.com/xo4x4ww/291b75b9faef598a2e697d29337388fb/raw/",
+
   // ВСЕ соцсети как указано
   SOCIAL_NETWORKS: {
-    github: { 
-      url: "https://github.com/Semyon595", 
-      username: "Semyon595",
+    github: {
+      url: "https://github.com/xo4x4ww",
+      username: "xo4x4ww",
       displayName: "GitHub"
     },
-    telegram: { 
-      url: "https://t.me/Semyon_5", 
-      username: "Semyon_5",
+    telegram: {
+      url: "https://t.me/xo4x4ww",
+      username: "xo4x4ww",
       displayName: "Telegram"
     },
-    pinterest: { 
-      url: "https://ru.pinterest.com/semyon_5/", 
-      username: "semyon_5",
+    pinterest: {
+      url: "https://ru.pinterest.com/xo4x4ww",
+      username: "xo4x4ww",
       displayName: "Pinterest"
     },
-    youtube: { 
-      url: "https://www.youtube.com/@Semyon_5", 
-      username: "@Semyon_5",
+    youtube: {
+      url: "https://www.youtube.com/@xo4x4ww",
+      username: "@xo4x4ww",
       displayName: "YouTube"
     },
-    itchio: { 
-      url: "https://semyon-5.itch.io/", 
-      username: "semyon-5",
+    itchio: {
+      url: "https://xo4x4ww.itch.io",
+      username: "xo4x4ww",
       displayName: "Itch.io"
     }
   }
